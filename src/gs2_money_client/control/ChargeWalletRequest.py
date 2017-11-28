@@ -144,9 +144,9 @@ class ChargeWalletRequest(Gs2UserRequest):
         :param price: 支払金額
         :type price: float
         """
-        if not isinstance(price, float):
+        if not isinstance(price, int) and not isinstance(price, float):
             raise TypeError(type(price))
-        self.__price = price
+        self.__price = float(price)
 
     def with_price(self, price):
         """
