@@ -34,14 +34,14 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
             self.__money_name = None
             self.__item_name = None
             self.__platform = None
-            self.__price = None
             self.__name = None
+            self.__price = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
             self.set_item_name(params['itemName'] if 'itemName' in params.keys() else None)
             self.set_platform(params['platform'] if 'platform' in params.keys() else None)
-            self.set_price(params['price'] if 'price' in params.keys() else None)
             self.set_name(params['name'] if 'name' in params.keys() else None)
+            self.set_price(params['price'] if 'price' in params.keys() else None)
 
     def get_money_name(self):
         """
@@ -124,33 +124,6 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         self.set_platform(platform)
         return self
 
-    def get_price(self):
-        """
-        販売価格を取得
-        :return: 販売価格
-        :rtype: float
-        """
-        return self.__price
-
-    def set_price(self, price):
-        """
-        販売価格を設定
-        :param price: 販売価格
-        :type price: float
-        """
-        self.__price = price
-
-    def with_price(self, price):
-        """
-        販売価格を設定
-        :param price: 販売価格
-        :type price: float
-        :return: this
-        :rtype: CreatePlatformedItemRequest
-        """
-        self.set_price(price)
-        return self
-
     def get_name(self):
         """
         アプリ内課金IDを取得
@@ -176,4 +149,31 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :rtype: CreatePlatformedItemRequest
         """
         self.set_name(name)
+        return self
+
+    def get_price(self):
+        """
+        販売価格を取得
+        :return: 販売価格
+        :rtype: float
+        """
+        return self.__price
+
+    def set_price(self, price):
+        """
+        販売価格を設定
+        :param price: 販売価格
+        :type price: float
+        """
+        self.__price = price
+
+    def with_price(self, price):
+        """
+        販売価格を設定
+        :param price: 販売価格
+        :type price: float
+        :return: this
+        :rtype: CreatePlatformedItemRequest
+        """
+        self.set_price(price)
         return self

@@ -34,14 +34,14 @@ class ConsumeWalletRequest(Gs2UserRequest):
             self.__money_name = None
             self.__slot = None
             self.__count = None
-            self.__paid_only = None
             self.__use = None
+            self.__paid_only = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
             self.set_slot(params['slot'] if 'slot' in params.keys() else None)
             self.set_count(params['count'] if 'count' in params.keys() else None)
-            self.set_paid_only(params['paidOnly'] if 'paidOnly' in params.keys() else None)
             self.set_use(params['use'] if 'use' in params.keys() else None)
+            self.set_paid_only(params['paidOnly'] if 'paidOnly' in params.keys() else None)
 
     def get_money_name(self):
         """
@@ -130,35 +130,6 @@ class ConsumeWalletRequest(Gs2UserRequest):
         self.set_count(count)
         return self
 
-    def get_paid_only(self):
-        """
-        有償仮想通貨のみ消費対象としたい場合に true を指定しますを取得
-        :return: 有償仮想通貨のみ消費対象としたい場合に true を指定します
-        :rtype: bool
-        """
-        return self.__paid_only
-
-    def set_paid_only(self, paid_only):
-        """
-        有償仮想通貨のみ消費対象としたい場合に true を指定しますを設定
-        :param paid_only: 有償仮想通貨のみ消費対象としたい場合に true を指定します
-        :type paid_only: bool
-        """
-        if not isinstance(paid_only, bool):
-            raise TypeError(type(paid_only))
-        self.__paid_only = paid_only
-
-    def with_paid_only(self, paid_only):
-        """
-        有償仮想通貨のみ消費対象としたい場合に true を指定しますを設定
-        :param paid_only: 有償仮想通貨のみ消費対象としたい場合に true を指定します
-        :type paid_only: bool
-        :return: this
-        :rtype: ConsumeWalletRequest
-        """
-        self.set_paid_only(paid_only)
-        return self
-
     def get_use(self):
         """
         用途IDを取得
@@ -186,4 +157,33 @@ class ConsumeWalletRequest(Gs2UserRequest):
         :rtype: ConsumeWalletRequest
         """
         self.set_use(use)
+        return self
+
+    def get_paid_only(self):
+        """
+        有償仮想通貨のみ消費対象としたい場合に true を指定しますを取得
+        :return: 有償仮想通貨のみ消費対象としたい場合に true を指定します
+        :rtype: bool
+        """
+        return self.__paid_only
+
+    def set_paid_only(self, paid_only):
+        """
+        有償仮想通貨のみ消費対象としたい場合に true を指定しますを設定
+        :param paid_only: 有償仮想通貨のみ消費対象としたい場合に true を指定します
+        :type paid_only: bool
+        """
+        if not isinstance(paid_only, bool):
+            raise TypeError(type(paid_only))
+        self.__paid_only = paid_only
+
+    def with_paid_only(self, paid_only):
+        """
+        有償仮想通貨のみ消費対象としたい場合に true を指定しますを設定
+        :param paid_only: 有償仮想通貨のみ消費対象としたい場合に true を指定します
+        :type paid_only: bool
+        :return: this
+        :rtype: ConsumeWalletRequest
+        """
+        self.set_paid_only(paid_only)
         return self

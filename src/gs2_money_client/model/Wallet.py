@@ -18,28 +18,12 @@ class Wallet(object):
 
     def __init__(self, params=None):
         if params is None:
-            self.__count = None
             self.__price = None
+            self.__count = None
         else:
-            self.set_count(params['count'] if 'count' in params.keys() else None)
             self.set_price(params['price'] if 'price' in params.keys() else None)
+            self.set_count(params['count'] if 'count' in params.keys() else None)
 
-
-    def get_count(self):
-        """
-        所持数を取得
-        :return: 所持数
-        :rtype: int
-        """
-        return self.__count
-
-    def set_count(self, count):
-        """
-        所持数を設定
-        :param count: 所持数
-        :type count: int
-        """
-        self.__count = count
 
     def get_price(self):
         """
@@ -57,8 +41,24 @@ class Wallet(object):
         """
         self.__price = price
 
+    def get_count(self):
+        """
+        所持数を取得
+        :return: 所持数
+        :rtype: int
+        """
+        return self.__count
+
+    def set_count(self, count):
+        """
+        所持数を設定
+        :param count: 所持数
+        :type count: int
+        """
+        self.__count = count
+
     def to_dict(self):
         return { 
-            "count": self.__count,
             "price": self.__price,
+            "count": self.__count,
         }

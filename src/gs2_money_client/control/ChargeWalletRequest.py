@@ -33,14 +33,14 @@ class ChargeWalletRequest(Gs2UserRequest):
         if params is None:
             self.__money_name = None
             self.__slot = None
-            self.__count = None
             self.__price = None
+            self.__count = None
             self.__transaction_id = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
             self.set_slot(params['slot'] if 'slot' in params.keys() else None)
-            self.set_count(params['count'] if 'count' in params.keys() else None)
             self.set_price(params['price'] if 'price' in params.keys() else None)
+            self.set_count(params['count'] if 'count' in params.keys() else None)
             self.set_transaction_id(params['transactionId'] if 'transactionId' in params.keys() else None)
 
     def get_money_name(self):
@@ -101,6 +101,35 @@ class ChargeWalletRequest(Gs2UserRequest):
         self.set_slot(slot)
         return self
 
+    def get_price(self):
+        """
+        支払金額を取得
+        :return: 支払金額
+        :rtype: float
+        """
+        return self.__price
+
+    def set_price(self, price):
+        """
+        支払金額を設定
+        :param price: 支払金額
+        :type price: float
+        """
+        if not isinstance(price, float):
+            raise TypeError(type(price))
+        self.__price = price
+
+    def with_price(self, price):
+        """
+        支払金額を設定
+        :param price: 支払金額
+        :type price: float
+        :return: this
+        :rtype: ChargeWalletRequest
+        """
+        self.set_price(price)
+        return self
+
     def get_count(self):
         """
         仮想通貨付与量を取得
@@ -128,35 +157,6 @@ class ChargeWalletRequest(Gs2UserRequest):
         :rtype: ChargeWalletRequest
         """
         self.set_count(count)
-        return self
-
-    def get_price(self):
-        """
-        支払金額を取得
-        :return: 支払金額
-        :rtype: float
-        """
-        return self.__price
-
-    def set_price(self, price):
-        """
-        支払金額を設定
-        :param price: 支払金額
-        :type price: float
-        """
-        if not isinstance(price, int) and not isinstance(price, float):
-            raise TypeError(type(price))
-        self.__price = float(price)
-
-    def with_price(self, price):
-        """
-        支払金額を設定
-        :param price: 支払金額
-        :type price: float
-        :return: this
-        :rtype: ChargeWalletRequest
-        """
-        self.set_price(price)
         return self
 
     def get_transaction_id(self):

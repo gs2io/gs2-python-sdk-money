@@ -32,12 +32,12 @@ class CreateItemRequest(Gs2BasicRequest):
         super(CreateItemRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
-            self.__count = None
             self.__name = None
+            self.__count = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
-            self.set_count(params['count'] if 'count' in params.keys() else None)
             self.set_name(params['name'] if 'name' in params.keys() else None)
+            self.set_count(params['count'] if 'count' in params.keys() else None)
 
     def get_money_name(self):
         """
@@ -66,33 +66,6 @@ class CreateItemRequest(Gs2BasicRequest):
         self.set_money_name(money_name)
         return self
 
-    def get_count(self):
-        """
-        付与する仮想通貨の数を取得
-        :return: 付与する仮想通貨の数
-        :rtype: int
-        """
-        return self.__count
-
-    def set_count(self, count):
-        """
-        付与する仮想通貨の数を設定
-        :param count: 付与する仮想通貨の数
-        :type count: int
-        """
-        self.__count = count
-
-    def with_count(self, count):
-        """
-        付与する仮想通貨の数を設定
-        :param count: 付与する仮想通貨の数
-        :type count: int
-        :return: this
-        :rtype: CreateItemRequest
-        """
-        self.set_count(count)
-        return self
-
     def get_name(self):
         """
         商品名を取得
@@ -118,4 +91,31 @@ class CreateItemRequest(Gs2BasicRequest):
         :rtype: CreateItemRequest
         """
         self.set_name(name)
+        return self
+
+    def get_count(self):
+        """
+        付与する仮想通貨の数を取得
+        :return: 付与する仮想通貨の数
+        :rtype: int
+        """
+        return self.__count
+
+    def set_count(self, count):
+        """
+        付与する仮想通貨の数を設定
+        :param count: 付与する仮想通貨の数
+        :type count: int
+        """
+        self.__count = count
+
+    def with_count(self, count):
+        """
+        付与する仮想通貨の数を設定
+        :param count: 付与する仮想通貨の数
+        :type count: int
+        :return: this
+        :rtype: CreateItemRequest
+        """
+        self.set_count(count)
         return self

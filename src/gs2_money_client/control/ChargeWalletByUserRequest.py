@@ -34,15 +34,15 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
             self.__money_name = None
             self.__slot = None
             self.__user_id = None
-            self.__count = None
             self.__price = None
+            self.__count = None
             self.__transaction_id = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
             self.set_slot(params['slot'] if 'slot' in params.keys() else None)
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
-            self.set_count(params['count'] if 'count' in params.keys() else None)
             self.set_price(params['price'] if 'price' in params.keys() else None)
+            self.set_count(params['count'] if 'count' in params.keys() else None)
             self.set_transaction_id(params['transactionId'] if 'transactionId' in params.keys() else None)
 
     def get_money_name(self):
@@ -126,33 +126,6 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         self.set_user_id(user_id)
         return self
 
-    def get_count(self):
-        """
-        仮想通貨付与量を取得
-        :return: 仮想通貨付与量
-        :rtype: int
-        """
-        return self.__count
-
-    def set_count(self, count):
-        """
-        仮想通貨付与量を設定
-        :param count: 仮想通貨付与量
-        :type count: int
-        """
-        self.__count = count
-
-    def with_count(self, count):
-        """
-        仮想通貨付与量を設定
-        :param count: 仮想通貨付与量
-        :type count: int
-        :return: this
-        :rtype: ChargeWalletByUserRequest
-        """
-        self.set_count(count)
-        return self
-
     def get_price(self):
         """
         支払金額を取得
@@ -178,6 +151,33 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :rtype: ChargeWalletByUserRequest
         """
         self.set_price(price)
+        return self
+
+    def get_count(self):
+        """
+        仮想通貨付与量を取得
+        :return: 仮想通貨付与量
+        :rtype: int
+        """
+        return self.__count
+
+    def set_count(self, count):
+        """
+        仮想通貨付与量を設定
+        :param count: 仮想通貨付与量
+        :type count: int
+        """
+        self.__count = count
+
+    def with_count(self, count):
+        """
+        仮想通貨付与量を設定
+        :param count: 仮想通貨付与量
+        :type count: int
+        :return: this
+        :rtype: ChargeWalletByUserRequest
+        """
+        self.set_count(count)
         return self
 
     def get_transaction_id(self):

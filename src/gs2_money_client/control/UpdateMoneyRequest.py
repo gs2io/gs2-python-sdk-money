@@ -32,18 +32,30 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         super(UpdateMoneyRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
+            self.__description = None
             self.__priority = None
             self.__use_verify_receipt = None
-            self.__google_key = None
-            self.__description = None
             self.__apple_key = None
+            self.__google_key = None
+            self.__create_wallet_trigger_script = None
+            self.__create_wallet_done_trigger_script = None
+            self.__charge_wallet_trigger_script = None
+            self.__charge_wallet_done_trigger_script = None
+            self.__consume_wallet_trigger_script = None
+            self.__consume_wallet_done_trigger_script = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
+            self.set_description(params['description'] if 'description' in params.keys() else None)
             self.set_priority(params['priority'] if 'priority' in params.keys() else None)
             self.set_use_verify_receipt(params['useVerifyReceipt'] if 'useVerifyReceipt' in params.keys() else None)
-            self.set_google_key(params['googleKey'] if 'googleKey' in params.keys() else None)
-            self.set_description(params['description'] if 'description' in params.keys() else None)
             self.set_apple_key(params['appleKey'] if 'appleKey' in params.keys() else None)
+            self.set_google_key(params['googleKey'] if 'googleKey' in params.keys() else None)
+            self.set_create_wallet_trigger_script(params['createWalletTriggerScript'] if 'createWalletTriggerScript' in params.keys() else None)
+            self.set_create_wallet_done_trigger_script(params['createWalletDoneTriggerScript'] if 'createWalletDoneTriggerScript' in params.keys() else None)
+            self.set_charge_wallet_trigger_script(params['chargeWalletTriggerScript'] if 'chargeWalletTriggerScript' in params.keys() else None)
+            self.set_charge_wallet_done_trigger_script(params['chargeWalletDoneTriggerScript'] if 'chargeWalletDoneTriggerScript' in params.keys() else None)
+            self.set_consume_wallet_trigger_script(params['consumeWalletTriggerScript'] if 'consumeWalletTriggerScript' in params.keys() else None)
+            self.set_consume_wallet_done_trigger_script(params['consumeWalletDoneTriggerScript'] if 'consumeWalletDoneTriggerScript' in params.keys() else None)
 
     def get_money_name(self):
         """
@@ -70,6 +82,33 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :rtype: UpdateMoneyRequest
         """
         self.set_money_name(money_name)
+        return self
+
+    def get_description(self):
+        """
+        説明文(1024文字以内)を取得
+        :return: 説明文(1024文字以内)
+        :rtype: unicode
+        """
+        return self.__description
+
+    def set_description(self, description):
+        """
+        説明文(1024文字以内)を設定
+        :param description: 説明文(1024文字以内)
+        :type description: unicode
+        """
+        self.__description = description
+
+    def with_description(self, description):
+        """
+        説明文(1024文字以内)を設定
+        :param description: 説明文(1024文字以内)
+        :type description: unicode
+        :return: this
+        :rtype: UpdateMoneyRequest
+        """
+        self.set_description(description)
         return self
 
     def get_priority(self):
@@ -126,6 +165,33 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         self.set_use_verify_receipt(use_verify_receipt)
         return self
 
+    def get_apple_key(self):
+        """
+        Apple のアプリケーションバンドルIDを取得
+        :return: Apple のアプリケーションバンドルID
+        :rtype: unicode
+        """
+        return self.__apple_key
+
+    def set_apple_key(self, apple_key):
+        """
+        Apple のアプリケーションバンドルIDを設定
+        :param apple_key: Apple のアプリケーションバンドルID
+        :type apple_key: unicode
+        """
+        self.__apple_key = apple_key
+
+    def with_apple_key(self, apple_key):
+        """
+        Apple のアプリケーションバンドルIDを設定
+        :param apple_key: Apple のアプリケーションバンドルID
+        :type apple_key: unicode
+        :return: this
+        :rtype: UpdateMoneyRequest
+        """
+        self.set_apple_key(apple_key)
+        return self
+
     def get_google_key(self):
         """
         Google のレシート検証用公開鍵を取得
@@ -153,56 +219,164 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         self.set_google_key(google_key)
         return self
 
-    def get_description(self):
+    def get_create_wallet_trigger_script(self):
         """
-        説明文(1024文字以内)を取得
-        :return: 説明文(1024文字以内)
+        ウォレット新規作成時 に実行されるGS2-Scriptを取得
+        :return: ウォレット新規作成時 に実行されるGS2-Script
         :rtype: unicode
         """
-        return self.__description
+        return self.__create_wallet_trigger_script
 
-    def set_description(self, description):
+    def set_create_wallet_trigger_script(self, create_wallet_trigger_script):
         """
-        説明文(1024文字以内)を設定
-        :param description: 説明文(1024文字以内)
-        :type description: unicode
+        ウォレット新規作成時 に実行されるGS2-Scriptを設定
+        :param create_wallet_trigger_script: ウォレット新規作成時 に実行されるGS2-Script
+        :type create_wallet_trigger_script: unicode
         """
-        self.__description = description
+        self.__create_wallet_trigger_script = create_wallet_trigger_script
 
-    def with_description(self, description):
+    def with_create_wallet_trigger_script(self, create_wallet_trigger_script):
         """
-        説明文(1024文字以内)を設定
-        :param description: 説明文(1024文字以内)
-        :type description: unicode
+        ウォレット新規作成時 に実行されるGS2-Scriptを設定
+        :param create_wallet_trigger_script: ウォレット新規作成時 に実行されるGS2-Script
+        :type create_wallet_trigger_script: unicode
         :return: this
         :rtype: UpdateMoneyRequest
         """
-        self.set_description(description)
+        self.set_create_wallet_trigger_script(create_wallet_trigger_script)
         return self
 
-    def get_apple_key(self):
+    def get_create_wallet_done_trigger_script(self):
         """
-        Apple のアプリケーションバンドルIDを取得
-        :return: Apple のアプリケーションバンドルID
+        ウォレット新規作成完了時 に実行されるGS2-Scriptを取得
+        :return: ウォレット新規作成完了時 に実行されるGS2-Script
         :rtype: unicode
         """
-        return self.__apple_key
+        return self.__create_wallet_done_trigger_script
 
-    def set_apple_key(self, apple_key):
+    def set_create_wallet_done_trigger_script(self, create_wallet_done_trigger_script):
         """
-        Apple のアプリケーションバンドルIDを設定
-        :param apple_key: Apple のアプリケーションバンドルID
-        :type apple_key: unicode
+        ウォレット新規作成完了時 に実行されるGS2-Scriptを設定
+        :param create_wallet_done_trigger_script: ウォレット新規作成完了時 に実行されるGS2-Script
+        :type create_wallet_done_trigger_script: unicode
         """
-        self.__apple_key = apple_key
+        self.__create_wallet_done_trigger_script = create_wallet_done_trigger_script
 
-    def with_apple_key(self, apple_key):
+    def with_create_wallet_done_trigger_script(self, create_wallet_done_trigger_script):
         """
-        Apple のアプリケーションバンドルIDを設定
-        :param apple_key: Apple のアプリケーションバンドルID
-        :type apple_key: unicode
+        ウォレット新規作成完了時 に実行されるGS2-Scriptを設定
+        :param create_wallet_done_trigger_script: ウォレット新規作成完了時 に実行されるGS2-Script
+        :type create_wallet_done_trigger_script: unicode
         :return: this
         :rtype: UpdateMoneyRequest
         """
-        self.set_apple_key(apple_key)
+        self.set_create_wallet_done_trigger_script(create_wallet_done_trigger_script)
+        return self
+
+    def get_charge_wallet_trigger_script(self):
+        """
+        ウォレット残高加算時 に実行されるGS2-Scriptを取得
+        :return: ウォレット残高加算時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__charge_wallet_trigger_script
+
+    def set_charge_wallet_trigger_script(self, charge_wallet_trigger_script):
+        """
+        ウォレット残高加算時 に実行されるGS2-Scriptを設定
+        :param charge_wallet_trigger_script: ウォレット残高加算時 に実行されるGS2-Script
+        :type charge_wallet_trigger_script: unicode
+        """
+        self.__charge_wallet_trigger_script = charge_wallet_trigger_script
+
+    def with_charge_wallet_trigger_script(self, charge_wallet_trigger_script):
+        """
+        ウォレット残高加算時 に実行されるGS2-Scriptを設定
+        :param charge_wallet_trigger_script: ウォレット残高加算時 に実行されるGS2-Script
+        :type charge_wallet_trigger_script: unicode
+        :return: this
+        :rtype: UpdateMoneyRequest
+        """
+        self.set_charge_wallet_trigger_script(charge_wallet_trigger_script)
+        return self
+
+    def get_charge_wallet_done_trigger_script(self):
+        """
+        ウォレット残高加算完了時 に実行されるGS2-Scriptを取得
+        :return: ウォレット残高加算完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__charge_wallet_done_trigger_script
+
+    def set_charge_wallet_done_trigger_script(self, charge_wallet_done_trigger_script):
+        """
+        ウォレット残高加算完了時 に実行されるGS2-Scriptを設定
+        :param charge_wallet_done_trigger_script: ウォレット残高加算完了時 に実行されるGS2-Script
+        :type charge_wallet_done_trigger_script: unicode
+        """
+        self.__charge_wallet_done_trigger_script = charge_wallet_done_trigger_script
+
+    def with_charge_wallet_done_trigger_script(self, charge_wallet_done_trigger_script):
+        """
+        ウォレット残高加算完了時 に実行されるGS2-Scriptを設定
+        :param charge_wallet_done_trigger_script: ウォレット残高加算完了時 に実行されるGS2-Script
+        :type charge_wallet_done_trigger_script: unicode
+        :return: this
+        :rtype: UpdateMoneyRequest
+        """
+        self.set_charge_wallet_done_trigger_script(charge_wallet_done_trigger_script)
+        return self
+
+    def get_consume_wallet_trigger_script(self):
+        """
+        ウォレット残高消費時 に実行されるGS2-Scriptを取得
+        :return: ウォレット残高消費時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__consume_wallet_trigger_script
+
+    def set_consume_wallet_trigger_script(self, consume_wallet_trigger_script):
+        """
+        ウォレット残高消費時 に実行されるGS2-Scriptを設定
+        :param consume_wallet_trigger_script: ウォレット残高消費時 に実行されるGS2-Script
+        :type consume_wallet_trigger_script: unicode
+        """
+        self.__consume_wallet_trigger_script = consume_wallet_trigger_script
+
+    def with_consume_wallet_trigger_script(self, consume_wallet_trigger_script):
+        """
+        ウォレット残高消費時 に実行されるGS2-Scriptを設定
+        :param consume_wallet_trigger_script: ウォレット残高消費時 に実行されるGS2-Script
+        :type consume_wallet_trigger_script: unicode
+        :return: this
+        :rtype: UpdateMoneyRequest
+        """
+        self.set_consume_wallet_trigger_script(consume_wallet_trigger_script)
+        return self
+
+    def get_consume_wallet_done_trigger_script(self):
+        """
+        ウォレット残高消費完了時 に実行されるGS2-Scriptを取得
+        :return: ウォレット残高消費完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__consume_wallet_done_trigger_script
+
+    def set_consume_wallet_done_trigger_script(self, consume_wallet_done_trigger_script):
+        """
+        ウォレット残高消費完了時 に実行されるGS2-Scriptを設定
+        :param consume_wallet_done_trigger_script: ウォレット残高消費完了時 に実行されるGS2-Script
+        :type consume_wallet_done_trigger_script: unicode
+        """
+        self.__consume_wallet_done_trigger_script = consume_wallet_done_trigger_script
+
+    def with_consume_wallet_done_trigger_script(self, consume_wallet_done_trigger_script):
+        """
+        ウォレット残高消費完了時 に実行されるGS2-Scriptを設定
+        :param consume_wallet_done_trigger_script: ウォレット残高消費完了時 に実行されるGS2-Script
+        :type consume_wallet_done_trigger_script: unicode
+        :return: this
+        :rtype: UpdateMoneyRequest
+        """
+        self.set_consume_wallet_done_trigger_script(consume_wallet_done_trigger_script)
         return self

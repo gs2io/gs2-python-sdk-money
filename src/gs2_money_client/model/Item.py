@@ -19,17 +19,17 @@ class Item(object):
     def __init__(self, params=None):
         if params is None:
             self.__item_id = None
-            self.__count = None
-            self.__create_at = None
             self.__money_id = None
             self.__name = None
+            self.__count = None
+            self.__create_at = None
             self.__update_at = None
         else:
             self.set_item_id(params['itemId'] if 'itemId' in params.keys() else None)
-            self.set_count(params['count'] if 'count' in params.keys() else None)
-            self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
             self.set_money_id(params['moneyId'] if 'moneyId' in params.keys() else None)
             self.set_name(params['name'] if 'name' in params.keys() else None)
+            self.set_count(params['count'] if 'count' in params.keys() else None)
+            self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
             self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
 
 
@@ -48,38 +48,6 @@ class Item(object):
         :type item_id: unicode
         """
         self.__item_id = item_id
-
-    def get_count(self):
-        """
-        付与する仮想通貨の数を取得
-        :return: 付与する仮想通貨の数
-        :rtype: int
-        """
-        return self.__count
-
-    def set_count(self, count):
-        """
-        付与する仮想通貨の数を設定
-        :param count: 付与する仮想通貨の数
-        :type count: int
-        """
-        self.__count = count
-
-    def get_create_at(self):
-        """
-        作成日時(エポック秒)を取得
-        :return: 作成日時(エポック秒)
-        :rtype: int
-        """
-        return self.__create_at
-
-    def set_create_at(self, create_at):
-        """
-        作成日時(エポック秒)を設定
-        :param create_at: 作成日時(エポック秒)
-        :type create_at: int
-        """
-        self.__create_at = create_at
 
     def get_money_id(self):
         """
@@ -113,6 +81,38 @@ class Item(object):
         """
         self.__name = name
 
+    def get_count(self):
+        """
+        付与する仮想通貨の数を取得
+        :return: 付与する仮想通貨の数
+        :rtype: int
+        """
+        return self.__count
+
+    def set_count(self, count):
+        """
+        付与する仮想通貨の数を設定
+        :param count: 付与する仮想通貨の数
+        :type count: int
+        """
+        self.__count = count
+
+    def get_create_at(self):
+        """
+        作成日時(エポック秒)を取得
+        :return: 作成日時(エポック秒)
+        :rtype: int
+        """
+        return self.__create_at
+
+    def set_create_at(self, create_at):
+        """
+        作成日時(エポック秒)を設定
+        :param create_at: 作成日時(エポック秒)
+        :type create_at: int
+        """
+        self.__create_at = create_at
+
     def get_update_at(self):
         """
         最終更新日時(エポック秒)を取得
@@ -132,9 +132,9 @@ class Item(object):
     def to_dict(self):
         return { 
             "itemId": self.__item_id,
-            "count": self.__count,
-            "createAt": self.__create_at,
             "moneyId": self.__money_id,
             "name": self.__name,
+            "count": self.__count,
+            "createAt": self.__create_at,
             "updateAt": self.__update_at,
         }

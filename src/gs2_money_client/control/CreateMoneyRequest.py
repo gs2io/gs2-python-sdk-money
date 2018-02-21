@@ -31,50 +31,35 @@ class CreateMoneyRequest(Gs2BasicRequest):
         """
         super(CreateMoneyRequest, self).__init__(params)
         if params is None:
-            self.__use_verify_receipt = None
             self.__name = None
-            self.__google_key = None
-            self.__priority = None
-            self.__currency = None
-            self.__share_free = None
-            self.__apple_key = None
             self.__description = None
+            self.__priority = None
+            self.__share_free = None
+            self.__currency = None
+            self.__use_verify_receipt = None
+            self.__apple_key = None
+            self.__google_key = None
+            self.__create_wallet_trigger_script = None
+            self.__create_wallet_done_trigger_script = None
+            self.__charge_wallet_trigger_script = None
+            self.__charge_wallet_done_trigger_script = None
+            self.__consume_wallet_trigger_script = None
+            self.__consume_wallet_done_trigger_script = None
         else:
-            self.set_use_verify_receipt(params['useVerifyReceipt'] if 'useVerifyReceipt' in params.keys() else None)
             self.set_name(params['name'] if 'name' in params.keys() else None)
-            self.set_google_key(params['googleKey'] if 'googleKey' in params.keys() else None)
-            self.set_priority(params['priority'] if 'priority' in params.keys() else None)
-            self.set_currency(params['currency'] if 'currency' in params.keys() else None)
-            self.set_share_free(params['shareFree'] if 'shareFree' in params.keys() else None)
-            self.set_apple_key(params['appleKey'] if 'appleKey' in params.keys() else None)
             self.set_description(params['description'] if 'description' in params.keys() else None)
-
-    def get_use_verify_receipt(self):
-        """
-        ストアプラットフォームのレシートの検証機能を利用するかを取得
-        :return: ストアプラットフォームのレシートの検証機能を利用するか
-        :rtype: bool
-        """
-        return self.__use_verify_receipt
-
-    def set_use_verify_receipt(self, use_verify_receipt):
-        """
-        ストアプラットフォームのレシートの検証機能を利用するかを設定
-        :param use_verify_receipt: ストアプラットフォームのレシートの検証機能を利用するか
-        :type use_verify_receipt: bool
-        """
-        self.__use_verify_receipt = use_verify_receipt
-
-    def with_use_verify_receipt(self, use_verify_receipt):
-        """
-        ストアプラットフォームのレシートの検証機能を利用するかを設定
-        :param use_verify_receipt: ストアプラットフォームのレシートの検証機能を利用するか
-        :type use_verify_receipt: bool
-        :return: this
-        :rtype: CreateMoneyRequest
-        """
-        self.set_use_verify_receipt(use_verify_receipt)
-        return self
+            self.set_priority(params['priority'] if 'priority' in params.keys() else None)
+            self.set_share_free(params['shareFree'] if 'shareFree' in params.keys() else None)
+            self.set_currency(params['currency'] if 'currency' in params.keys() else None)
+            self.set_use_verify_receipt(params['useVerifyReceipt'] if 'useVerifyReceipt' in params.keys() else None)
+            self.set_apple_key(params['appleKey'] if 'appleKey' in params.keys() else None)
+            self.set_google_key(params['googleKey'] if 'googleKey' in params.keys() else None)
+            self.set_create_wallet_trigger_script(params['createWalletTriggerScript'] if 'createWalletTriggerScript' in params.keys() else None)
+            self.set_create_wallet_done_trigger_script(params['createWalletDoneTriggerScript'] if 'createWalletDoneTriggerScript' in params.keys() else None)
+            self.set_charge_wallet_trigger_script(params['chargeWalletTriggerScript'] if 'chargeWalletTriggerScript' in params.keys() else None)
+            self.set_charge_wallet_done_trigger_script(params['chargeWalletDoneTriggerScript'] if 'chargeWalletDoneTriggerScript' in params.keys() else None)
+            self.set_consume_wallet_trigger_script(params['consumeWalletTriggerScript'] if 'consumeWalletTriggerScript' in params.keys() else None)
+            self.set_consume_wallet_done_trigger_script(params['consumeWalletDoneTriggerScript'] if 'consumeWalletDoneTriggerScript' in params.keys() else None)
 
     def get_name(self):
         """
@@ -103,31 +88,31 @@ class CreateMoneyRequest(Gs2BasicRequest):
         self.set_name(name)
         return self
 
-    def get_google_key(self):
+    def get_description(self):
         """
-        Google のレシート検証用公開鍵を取得
-        :return: Google のレシート検証用公開鍵
+        説明文(1024文字以内)を取得
+        :return: 説明文(1024文字以内)
         :rtype: unicode
         """
-        return self.__google_key
+        return self.__description
 
-    def set_google_key(self, google_key):
+    def set_description(self, description):
         """
-        Google のレシート検証用公開鍵を設定
-        :param google_key: Google のレシート検証用公開鍵
-        :type google_key: unicode
+        説明文(1024文字以内)を設定
+        :param description: 説明文(1024文字以内)
+        :type description: unicode
         """
-        self.__google_key = google_key
+        self.__description = description
 
-    def with_google_key(self, google_key):
+    def with_description(self, description):
         """
-        Google のレシート検証用公開鍵を設定
-        :param google_key: Google のレシート検証用公開鍵
-        :type google_key: unicode
+        説明文(1024文字以内)を設定
+        :param description: 説明文(1024文字以内)
+        :type description: unicode
         :return: this
         :rtype: CreateMoneyRequest
         """
-        self.set_google_key(google_key)
+        self.set_description(description)
         return self
 
     def get_priority(self):
@@ -157,6 +142,33 @@ class CreateMoneyRequest(Gs2BasicRequest):
         self.set_priority(priority)
         return self
 
+    def get_share_free(self):
+        """
+        無償仮想通貨を異なるスロットで共有するかを取得
+        :return: 無償仮想通貨を異なるスロットで共有するか
+        :rtype: bool
+        """
+        return self.__share_free
+
+    def set_share_free(self, share_free):
+        """
+        無償仮想通貨を異なるスロットで共有するかを設定
+        :param share_free: 無償仮想通貨を異なるスロットで共有するか
+        :type share_free: bool
+        """
+        self.__share_free = share_free
+
+    def with_share_free(self, share_free):
+        """
+        無償仮想通貨を異なるスロットで共有するかを設定
+        :param share_free: 無償仮想通貨を異なるスロットで共有するか
+        :type share_free: bool
+        :return: this
+        :rtype: CreateMoneyRequest
+        """
+        self.set_share_free(share_free)
+        return self
+
     def get_currency(self):
         """
         通貨を取得
@@ -184,31 +196,31 @@ class CreateMoneyRequest(Gs2BasicRequest):
         self.set_currency(currency)
         return self
 
-    def get_share_free(self):
+    def get_use_verify_receipt(self):
         """
-        無償仮想通貨を異なるスロットで共有するかを取得
-        :return: 無償仮想通貨を異なるスロットで共有するか
+        ストアプラットフォームのレシートの検証機能を利用するかを取得
+        :return: ストアプラットフォームのレシートの検証機能を利用するか
         :rtype: bool
         """
-        return self.__share_free
+        return self.__use_verify_receipt
 
-    def set_share_free(self, share_free):
+    def set_use_verify_receipt(self, use_verify_receipt):
         """
-        無償仮想通貨を異なるスロットで共有するかを設定
-        :param share_free: 無償仮想通貨を異なるスロットで共有するか
-        :type share_free: bool
+        ストアプラットフォームのレシートの検証機能を利用するかを設定
+        :param use_verify_receipt: ストアプラットフォームのレシートの検証機能を利用するか
+        :type use_verify_receipt: bool
         """
-        self.__share_free = share_free
+        self.__use_verify_receipt = use_verify_receipt
 
-    def with_share_free(self, share_free):
+    def with_use_verify_receipt(self, use_verify_receipt):
         """
-        無償仮想通貨を異なるスロットで共有するかを設定
-        :param share_free: 無償仮想通貨を異なるスロットで共有するか
-        :type share_free: bool
+        ストアプラットフォームのレシートの検証機能を利用するかを設定
+        :param use_verify_receipt: ストアプラットフォームのレシートの検証機能を利用するか
+        :type use_verify_receipt: bool
         :return: this
         :rtype: CreateMoneyRequest
         """
-        self.set_share_free(share_free)
+        self.set_use_verify_receipt(use_verify_receipt)
         return self
 
     def get_apple_key(self):
@@ -238,29 +250,191 @@ class CreateMoneyRequest(Gs2BasicRequest):
         self.set_apple_key(apple_key)
         return self
 
-    def get_description(self):
+    def get_google_key(self):
         """
-        説明文(1024文字以内)を取得
-        :return: 説明文(1024文字以内)
+        Google のレシート検証用公開鍵を取得
+        :return: Google のレシート検証用公開鍵
         :rtype: unicode
         """
-        return self.__description
+        return self.__google_key
 
-    def set_description(self, description):
+    def set_google_key(self, google_key):
         """
-        説明文(1024文字以内)を設定
-        :param description: 説明文(1024文字以内)
-        :type description: unicode
+        Google のレシート検証用公開鍵を設定
+        :param google_key: Google のレシート検証用公開鍵
+        :type google_key: unicode
         """
-        self.__description = description
+        self.__google_key = google_key
 
-    def with_description(self, description):
+    def with_google_key(self, google_key):
         """
-        説明文(1024文字以内)を設定
-        :param description: 説明文(1024文字以内)
-        :type description: unicode
+        Google のレシート検証用公開鍵を設定
+        :param google_key: Google のレシート検証用公開鍵
+        :type google_key: unicode
         :return: this
         :rtype: CreateMoneyRequest
         """
-        self.set_description(description)
+        self.set_google_key(google_key)
+        return self
+
+    def get_create_wallet_trigger_script(self):
+        """
+        ウォレット新規作成時 に実行されるGS2-Scriptを取得
+        :return: ウォレット新規作成時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__create_wallet_trigger_script
+
+    def set_create_wallet_trigger_script(self, create_wallet_trigger_script):
+        """
+        ウォレット新規作成時 に実行されるGS2-Scriptを設定
+        :param create_wallet_trigger_script: ウォレット新規作成時 に実行されるGS2-Script
+        :type create_wallet_trigger_script: unicode
+        """
+        self.__create_wallet_trigger_script = create_wallet_trigger_script
+
+    def with_create_wallet_trigger_script(self, create_wallet_trigger_script):
+        """
+        ウォレット新規作成時 に実行されるGS2-Scriptを設定
+        :param create_wallet_trigger_script: ウォレット新規作成時 に実行されるGS2-Script
+        :type create_wallet_trigger_script: unicode
+        :return: this
+        :rtype: CreateMoneyRequest
+        """
+        self.set_create_wallet_trigger_script(create_wallet_trigger_script)
+        return self
+
+    def get_create_wallet_done_trigger_script(self):
+        """
+        ウォレット新規作成完了時 に実行されるGS2-Scriptを取得
+        :return: ウォレット新規作成完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__create_wallet_done_trigger_script
+
+    def set_create_wallet_done_trigger_script(self, create_wallet_done_trigger_script):
+        """
+        ウォレット新規作成完了時 に実行されるGS2-Scriptを設定
+        :param create_wallet_done_trigger_script: ウォレット新規作成完了時 に実行されるGS2-Script
+        :type create_wallet_done_trigger_script: unicode
+        """
+        self.__create_wallet_done_trigger_script = create_wallet_done_trigger_script
+
+    def with_create_wallet_done_trigger_script(self, create_wallet_done_trigger_script):
+        """
+        ウォレット新規作成完了時 に実行されるGS2-Scriptを設定
+        :param create_wallet_done_trigger_script: ウォレット新規作成完了時 に実行されるGS2-Script
+        :type create_wallet_done_trigger_script: unicode
+        :return: this
+        :rtype: CreateMoneyRequest
+        """
+        self.set_create_wallet_done_trigger_script(create_wallet_done_trigger_script)
+        return self
+
+    def get_charge_wallet_trigger_script(self):
+        """
+        ウォレット残高加算時 に実行されるGS2-Scriptを取得
+        :return: ウォレット残高加算時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__charge_wallet_trigger_script
+
+    def set_charge_wallet_trigger_script(self, charge_wallet_trigger_script):
+        """
+        ウォレット残高加算時 に実行されるGS2-Scriptを設定
+        :param charge_wallet_trigger_script: ウォレット残高加算時 に実行されるGS2-Script
+        :type charge_wallet_trigger_script: unicode
+        """
+        self.__charge_wallet_trigger_script = charge_wallet_trigger_script
+
+    def with_charge_wallet_trigger_script(self, charge_wallet_trigger_script):
+        """
+        ウォレット残高加算時 に実行されるGS2-Scriptを設定
+        :param charge_wallet_trigger_script: ウォレット残高加算時 に実行されるGS2-Script
+        :type charge_wallet_trigger_script: unicode
+        :return: this
+        :rtype: CreateMoneyRequest
+        """
+        self.set_charge_wallet_trigger_script(charge_wallet_trigger_script)
+        return self
+
+    def get_charge_wallet_done_trigger_script(self):
+        """
+        ウォレット残高加算完了時 に実行されるGS2-Scriptを取得
+        :return: ウォレット残高加算完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__charge_wallet_done_trigger_script
+
+    def set_charge_wallet_done_trigger_script(self, charge_wallet_done_trigger_script):
+        """
+        ウォレット残高加算完了時 に実行されるGS2-Scriptを設定
+        :param charge_wallet_done_trigger_script: ウォレット残高加算完了時 に実行されるGS2-Script
+        :type charge_wallet_done_trigger_script: unicode
+        """
+        self.__charge_wallet_done_trigger_script = charge_wallet_done_trigger_script
+
+    def with_charge_wallet_done_trigger_script(self, charge_wallet_done_trigger_script):
+        """
+        ウォレット残高加算完了時 に実行されるGS2-Scriptを設定
+        :param charge_wallet_done_trigger_script: ウォレット残高加算完了時 に実行されるGS2-Script
+        :type charge_wallet_done_trigger_script: unicode
+        :return: this
+        :rtype: CreateMoneyRequest
+        """
+        self.set_charge_wallet_done_trigger_script(charge_wallet_done_trigger_script)
+        return self
+
+    def get_consume_wallet_trigger_script(self):
+        """
+        ウォレット残高消費時 に実行されるGS2-Scriptを取得
+        :return: ウォレット残高消費時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__consume_wallet_trigger_script
+
+    def set_consume_wallet_trigger_script(self, consume_wallet_trigger_script):
+        """
+        ウォレット残高消費時 に実行されるGS2-Scriptを設定
+        :param consume_wallet_trigger_script: ウォレット残高消費時 に実行されるGS2-Script
+        :type consume_wallet_trigger_script: unicode
+        """
+        self.__consume_wallet_trigger_script = consume_wallet_trigger_script
+
+    def with_consume_wallet_trigger_script(self, consume_wallet_trigger_script):
+        """
+        ウォレット残高消費時 に実行されるGS2-Scriptを設定
+        :param consume_wallet_trigger_script: ウォレット残高消費時 に実行されるGS2-Script
+        :type consume_wallet_trigger_script: unicode
+        :return: this
+        :rtype: CreateMoneyRequest
+        """
+        self.set_consume_wallet_trigger_script(consume_wallet_trigger_script)
+        return self
+
+    def get_consume_wallet_done_trigger_script(self):
+        """
+        ウォレット残高消費完了時 に実行されるGS2-Scriptを取得
+        :return: ウォレット残高消費完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__consume_wallet_done_trigger_script
+
+    def set_consume_wallet_done_trigger_script(self, consume_wallet_done_trigger_script):
+        """
+        ウォレット残高消費完了時 に実行されるGS2-Scriptを設定
+        :param consume_wallet_done_trigger_script: ウォレット残高消費完了時 に実行されるGS2-Script
+        :type consume_wallet_done_trigger_script: unicode
+        """
+        self.__consume_wallet_done_trigger_script = consume_wallet_done_trigger_script
+
+    def with_consume_wallet_done_trigger_script(self, consume_wallet_done_trigger_script):
+        """
+        ウォレット残高消費完了時 に実行されるGS2-Scriptを設定
+        :param consume_wallet_done_trigger_script: ウォレット残高消費完了時 に実行されるGS2-Script
+        :type consume_wallet_done_trigger_script: unicode
+        :return: this
+        :rtype: CreateMoneyRequest
+        """
+        self.set_consume_wallet_done_trigger_script(consume_wallet_done_trigger_script)
         return self
