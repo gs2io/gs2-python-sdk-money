@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class Summary(object):
 
     def __init__(self, params=None):
@@ -31,7 +32,6 @@ class Summary(object):
             self.set_free(params['free'] if 'free' in params.keys() else None)
             self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
             self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
-
 
     def get_user_id(self):
         """
@@ -130,7 +130,7 @@ class Summary(object):
         self.__update_at = update_at
 
     def to_dict(self):
-        return { 
+        return {
             "userId": self.__user_id,
             "slot": self.__slot,
             "paid": self.__paid,

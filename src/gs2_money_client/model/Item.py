@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class Item(object):
 
     def __init__(self, params=None):
@@ -32,35 +33,34 @@ class Item(object):
             self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
             self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
 
-
     def get_item_id(self):
         """
-        商品IDを取得
-        :return: 商品ID
+        商品GRNを取得
+        :return: 商品GRN
         :rtype: unicode
         """
         return self.__item_id
 
     def set_item_id(self, item_id):
         """
-        商品IDを設定
-        :param item_id: 商品ID
+        商品GRNを設定
+        :param item_id: 商品GRN
         :type item_id: unicode
         """
         self.__item_id = item_id
 
     def get_money_id(self):
         """
-        仮想通貨IDを取得
-        :return: 仮想通貨ID
+        仮想通貨GRNを取得
+        :return: 仮想通貨GRN
         :rtype: unicode
         """
         return self.__money_id
 
     def set_money_id(self, money_id):
         """
-        仮想通貨IDを設定
-        :param money_id: 仮想通貨ID
+        仮想通貨GRNを設定
+        :param money_id: 仮想通貨GRN
         :type money_id: unicode
         """
         self.__money_id = money_id
@@ -130,7 +130,7 @@ class Item(object):
         self.__update_at = update_at
 
     def to_dict(self):
-        return { 
+        return {
             "itemId": self.__item_id,
             "moneyId": self.__money_id,
             "name": self.__name,

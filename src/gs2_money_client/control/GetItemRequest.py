@@ -32,9 +32,11 @@ class GetItemRequest(Gs2BasicRequest):
         super(GetItemRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
-            self.__item_name = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
+        if params is None:
+            self.__item_name = None
+        else:
             self.set_item_name(params['itemName'] if 'itemName' in params.keys() else None)
 
     def get_money_name(self):
@@ -51,6 +53,8 @@ class GetItemRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
+        if not isinstance(money_name, unicode):
+            raise TypeError(type(money_name))
         self.__money_name = money_name
 
     def with_money_name(self, money_name):
@@ -78,6 +82,8 @@ class GetItemRequest(Gs2BasicRequest):
         :param item_name: 商品の名前
         :type item_name: unicode
         """
+        if not isinstance(item_name, unicode):
+            raise TypeError(type(item_name))
         self.__item_name = item_name
 
     def with_item_name(self, item_name):

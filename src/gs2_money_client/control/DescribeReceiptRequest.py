@@ -32,15 +32,23 @@ class DescribeReceiptRequest(Gs2BasicRequest):
         super(DescribeReceiptRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
-            self.__begin = None
-            self.__end = None
-            self.__page_token = None
-            self.__limit = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
+        if params is None:
+            self.__begin = None
+        else:
             self.set_begin(params['begin'] if 'begin' in params.keys() else None)
+        if params is None:
+            self.__end = None
+        else:
             self.set_end(params['end'] if 'end' in params.keys() else None)
+        if params is None:
+            self.__page_token = None
+        else:
             self.set_page_token(params['pageToken'] if 'pageToken' in params.keys() else None)
+        if params is None:
+            self.__limit = None
+        else:
             self.set_limit(params['limit'] if 'limit' in params.keys() else None)
 
     def get_money_name(self):
@@ -57,6 +65,8 @@ class DescribeReceiptRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
+        if not isinstance(money_name, unicode):
+            raise TypeError(type(money_name))
         self.__money_name = money_name
 
     def with_money_name(self, money_name):
@@ -84,6 +94,8 @@ class DescribeReceiptRequest(Gs2BasicRequest):
         :param begin: データの取得開始日時(エポック秒)
         :type begin: int
         """
+        if not isinstance(begin, int):
+            raise TypeError(type(begin))
         self.__begin = begin
 
     def with_begin(self, begin):
@@ -111,6 +123,8 @@ class DescribeReceiptRequest(Gs2BasicRequest):
         :param end: データの取得終了日時(エポック秒)
         :type end: int
         """
+        if not isinstance(end, int):
+            raise TypeError(type(end))
         self.__end = end
 
     def with_end(self, end):
@@ -138,6 +152,8 @@ class DescribeReceiptRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
+        if not isinstance(page_token, unicode):
+            raise TypeError(type(page_token))
         self.__page_token = page_token
 
     def with_page_token(self, page_token):
@@ -165,6 +181,8 @@ class DescribeReceiptRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         """
+        if not isinstance(limit, int):
+            raise TypeError(type(limit))
         self.__limit = limit
 
     def with_limit(self, limit):

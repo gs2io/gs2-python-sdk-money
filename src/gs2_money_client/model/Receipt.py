@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class Receipt(object):
 
     def __init__(self, params=None):
@@ -37,7 +38,6 @@ class Receipt(object):
             self.set_total(params['total'] if 'total' in params.keys() else None)
             self.set_use(params['use'] if 'use' in params.keys() else None)
             self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
-
 
     def get_user_id(self):
         """
@@ -70,22 +70,6 @@ class Receipt(object):
         :type slot: int
         """
         self.__slot = slot
-
-    def get_type(self):
-        """
-        種類を取得
-        :return: 種類
-        :rtype: unicode
-        """
-        return self.__type
-
-    def set_type(self, type):
-        """
-        種類を設定
-        :param type: 種類
-        :type type: unicode
-        """
-        self.__type = type
 
     def get_price(self):
         """
@@ -183,8 +167,24 @@ class Receipt(object):
         """
         self.__create_at = create_at
 
+    def get_type(self):
+        """
+        種類を取得
+        :return: 種類
+        :rtype: unicode
+        """
+        return self.__type
+
+    def set_type(self, _type):
+        """
+        種類を設定
+        :param _type: 種類
+        :type _type: unicode
+        """
+        self.__type = _type
+
     def to_dict(self):
-        return { 
+        return {
             "userId": self.__user_id,
             "slot": self.__slot,
             "type": self.__type,

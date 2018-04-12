@@ -32,11 +32,15 @@ class UpdateItemRequest(Gs2BasicRequest):
         super(UpdateItemRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
-            self.__item_name = None
-            self.__count = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
+        if params is None:
+            self.__item_name = None
+        else:
             self.set_item_name(params['itemName'] if 'itemName' in params.keys() else None)
+        if params is None:
+            self.__count = None
+        else:
             self.set_count(params['count'] if 'count' in params.keys() else None)
 
     def get_money_name(self):
@@ -53,6 +57,8 @@ class UpdateItemRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
+        if not isinstance(money_name, unicode):
+            raise TypeError(type(money_name))
         self.__money_name = money_name
 
     def with_money_name(self, money_name):
@@ -80,6 +86,8 @@ class UpdateItemRequest(Gs2BasicRequest):
         :param item_name: 商品の名前
         :type item_name: unicode
         """
+        if not isinstance(item_name, unicode):
+            raise TypeError(type(item_name))
         self.__item_name = item_name
 
     def with_item_name(self, item_name):
@@ -107,6 +115,8 @@ class UpdateItemRequest(Gs2BasicRequest):
         :param count: 付与する商品の数
         :type count: int
         """
+        if not isinstance(count, int):
+            raise TypeError(type(count))
         self.__count = count
 
     def with_count(self, count):

@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class PlatformedItem(object):
 
     def __init__(self, params=None):
@@ -36,51 +37,50 @@ class PlatformedItem(object):
             self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
             self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
 
-
     def get_platformed_item_id(self):
         """
-        プラットフォーム個別商品IDを取得
-        :return: プラットフォーム個別商品ID
+        プラットフォーム個別商品GRNを取得
+        :return: プラットフォーム個別商品GRN
         :rtype: unicode
         """
         return self.__platformed_item_id
 
     def set_platformed_item_id(self, platformed_item_id):
         """
-        プラットフォーム個別商品IDを設定
-        :param platformed_item_id: プラットフォーム個別商品ID
+        プラットフォーム個別商品GRNを設定
+        :param platformed_item_id: プラットフォーム個別商品GRN
         :type platformed_item_id: unicode
         """
         self.__platformed_item_id = platformed_item_id
 
     def get_money_id(self):
         """
-        仮想通貨IDを取得
-        :return: 仮想通貨ID
+        仮想通貨GRNを取得
+        :return: 仮想通貨GRN
         :rtype: unicode
         """
         return self.__money_id
 
     def set_money_id(self, money_id):
         """
-        仮想通貨IDを設定
-        :param money_id: 仮想通貨ID
+        仮想通貨GRNを設定
+        :param money_id: 仮想通貨GRN
         :type money_id: unicode
         """
         self.__money_id = money_id
 
     def get_item_id(self):
         """
-        商品IDを取得
-        :return: 商品ID
+        商品GRNを取得
+        :return: 商品GRN
         :rtype: unicode
         """
         return self.__item_id
 
     def set_item_id(self, item_id):
         """
-        商品IDを設定
-        :param item_id: 商品ID
+        商品GRNを設定
+        :param item_id: 商品GRN
         :type item_id: unicode
         """
         self.__item_id = item_id
@@ -166,7 +166,7 @@ class PlatformedItem(object):
         self.__update_at = update_at
 
     def to_dict(self):
-        return { 
+        return {
             "platformedItemId": self.__platformed_item_id,
             "moneyId": self.__money_id,
             "itemId": self.__item_id,

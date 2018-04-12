@@ -18,10 +18,10 @@ from gs2_core_client.Gs2BasicRequest import Gs2BasicRequest
 from gs2_money_client.Gs2Money import Gs2Money
 
 
-class ChargeWalletByUserRequest(Gs2BasicRequest):
+class ChargeWalletByUserIdRequest(Gs2BasicRequest):
 
     class Constant(Gs2Money):
-        FUNCTION = "ChargeWalletByUser"
+        FUNCTION = "ChargeWalletByUserId"
 
     def __init__(self, params=None):
         """
@@ -29,20 +29,30 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param params: 辞書配列形式のパラメータ初期値リスト
         :type params: dict|None
         """
-        super(ChargeWalletByUserRequest, self).__init__(params)
+        super(ChargeWalletByUserIdRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
-            self.__slot = None
-            self.__user_id = None
-            self.__price = None
-            self.__count = None
-            self.__transaction_id = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
+        if params is None:
+            self.__slot = None
+        else:
             self.set_slot(params['slot'] if 'slot' in params.keys() else None)
+        if params is None:
+            self.__user_id = None
+        else:
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
+            self.__price = None
+        else:
             self.set_price(params['price'] if 'price' in params.keys() else None)
+        if params is None:
+            self.__count = None
+        else:
             self.set_count(params['count'] if 'count' in params.keys() else None)
+        if params is None:
+            self.__transaction_id = None
+        else:
             self.set_transaction_id(params['transactionId'] if 'transactionId' in params.keys() else None)
 
     def get_money_name(self):
@@ -59,6 +69,8 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
+        if not isinstance(money_name, unicode):
+            raise TypeError(type(money_name))
         self.__money_name = money_name
 
     def with_money_name(self, money_name):
@@ -67,7 +79,7 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         :return: this
-        :rtype: ChargeWalletByUserRequest
+        :rtype: ChargeWalletByUserIdRequest
         """
         self.set_money_name(money_name)
         return self
@@ -86,6 +98,8 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param slot: ウォレットのスロット番号
         :type slot: int
         """
+        if not isinstance(slot, int):
+            raise TypeError(type(slot))
         self.__slot = slot
 
     def with_slot(self, slot):
@@ -94,7 +108,7 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param slot: ウォレットのスロット番号
         :type slot: int
         :return: this
-        :rtype: ChargeWalletByUserRequest
+        :rtype: ChargeWalletByUserIdRequest
         """
         self.set_slot(slot)
         return self
@@ -113,6 +127,8 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param user_id: ウォレットのユーザID
         :type user_id: unicode
         """
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -121,7 +137,7 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param user_id: ウォレットのユーザID
         :type user_id: unicode
         :return: this
-        :rtype: ChargeWalletByUserRequest
+        :rtype: ChargeWalletByUserIdRequest
         """
         self.set_user_id(user_id)
         return self
@@ -140,6 +156,8 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param price: 支払金額
         :type price: float
         """
+        if not isinstance(price, float):
+            raise TypeError(type(price))
         self.__price = price
 
     def with_price(self, price):
@@ -148,7 +166,7 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param price: 支払金額
         :type price: float
         :return: this
-        :rtype: ChargeWalletByUserRequest
+        :rtype: ChargeWalletByUserIdRequest
         """
         self.set_price(price)
         return self
@@ -167,6 +185,8 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param count: 仮想通貨付与量
         :type count: int
         """
+        if not isinstance(count, int):
+            raise TypeError(type(count))
         self.__count = count
 
     def with_count(self, count):
@@ -175,7 +195,7 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param count: 仮想通貨付与量
         :type count: int
         :return: this
-        :rtype: ChargeWalletByUserRequest
+        :rtype: ChargeWalletByUserIdRequest
         """
         self.set_count(count)
         return self
@@ -194,6 +214,8 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param transaction_id: トランザクションID
         :type transaction_id: unicode
         """
+        if not isinstance(transaction_id, unicode):
+            raise TypeError(type(transaction_id))
         self.__transaction_id = transaction_id
 
     def with_transaction_id(self, transaction_id):
@@ -202,7 +224,7 @@ class ChargeWalletByUserRequest(Gs2BasicRequest):
         :param transaction_id: トランザクションID
         :type transaction_id: unicode
         :return: this
-        :rtype: ChargeWalletByUserRequest
+        :rtype: ChargeWalletByUserIdRequest
         """
         self.set_transaction_id(transaction_id)
         return self

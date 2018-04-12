@@ -17,7 +17,7 @@
 from gs2_money_client.model import *
 
 
-class ChargeWalletByUserResult(object):
+class DescribeReceiptByUserIdAndSlotResult(object):
 
     def __init__(self, response):
         """
@@ -25,16 +25,30 @@ class ChargeWalletByUserResult(object):
         :type response: レスポンスボディ
         :type response: dict
         """
-        
-        self.__item = Summary(response['item']) if 'item' in response.keys() and response['item'] is not None else None
+        self.__items = list(
+            map(
+                lambda data:
+                Receipt(data),
+                response['items']
+            )
+        )
+        self.__next_page_token = unicode(response['nextPageToken']) if 'nextPageToken' in response.keys() and response['nextPageToken'] is not None else None
 
-    def get_item(self):
+    def get_items(self):
         """
-        ウォレットを取得
-        :return: ウォレット
-        :rtype: Summary
+        レシートを取得
+        :return: レシート
+        :rtype: list[Receipt]
         """
-        return self.__item
+        return self.__items
+
+    def get_next_page_token(self):
+        """
+        次のページを読み込むためのトークンを取得
+        :return: 次のページを読み込むためのトークン
+        :rtype: unicode
+        """
+        return self.__next_page_token
 
     def to_dict(self):
         """
@@ -42,7 +56,7 @@ class ChargeWalletByUserResult(object):
         :return: 辞書配列
         :rtype: dict
         """
-        return { 
-            'item': self.__item.to_dict(),
-        
+        return {
+            'items': map(lambda item: item.to_dict(), self.__items),
+            'nextPageToken': self.__next_page_token,
         }

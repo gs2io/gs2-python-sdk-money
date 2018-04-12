@@ -32,11 +32,15 @@ class CreateItemRequest(Gs2BasicRequest):
         super(CreateItemRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
-            self.__name = None
-            self.__count = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
+        if params is None:
+            self.__name = None
+        else:
             self.set_name(params['name'] if 'name' in params.keys() else None)
+        if params is None:
+            self.__count = None
+        else:
             self.set_count(params['count'] if 'count' in params.keys() else None)
 
     def get_money_name(self):
@@ -53,6 +57,8 @@ class CreateItemRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
+        if not isinstance(money_name, unicode):
+            raise TypeError(type(money_name))
         self.__money_name = money_name
 
     def with_money_name(self, money_name):
@@ -80,6 +86,8 @@ class CreateItemRequest(Gs2BasicRequest):
         :param name: 商品名
         :type name: unicode
         """
+        if not isinstance(name, unicode):
+            raise TypeError(type(name))
         self.__name = name
 
     def with_name(self, name):
@@ -107,6 +115,8 @@ class CreateItemRequest(Gs2BasicRequest):
         :param count: 付与する仮想通貨の数
         :type count: int
         """
+        if not isinstance(count, int):
+            raise TypeError(type(count))
         self.__count = count
 
     def with_count(self, count):

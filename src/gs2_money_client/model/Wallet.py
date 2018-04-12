@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class Wallet(object):
 
     def __init__(self, params=None):
@@ -23,7 +24,6 @@ class Wallet(object):
         else:
             self.set_price(params['price'] if 'price' in params.keys() else None)
             self.set_count(params['count'] if 'count' in params.keys() else None)
-
 
     def get_price(self):
         """
@@ -58,7 +58,7 @@ class Wallet(object):
         self.__count = count
 
     def to_dict(self):
-        return { 
+        return {
             "price": self.__price,
             "count": self.__count,
         }

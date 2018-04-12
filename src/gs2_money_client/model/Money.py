@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class Money(object):
 
     def __init__(self, params=None):
@@ -58,19 +59,18 @@ class Money(object):
             self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
             self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
 
-
     def get_money_id(self):
         """
-        仮想通貨IDを取得
-        :return: 仮想通貨ID
+        仮想通貨GRNを取得
+        :return: 仮想通貨GRN
         :rtype: unicode
         """
         return self.__money_id
 
     def set_money_id(self, money_id):
         """
-        仮想通貨IDを設定
-        :param money_id: 仮想通貨ID
+        仮想通貨GRNを設定
+        :param money_id: 仮想通貨GRN
         :type money_id: unicode
         """
         self.__money_id = money_id
@@ -364,7 +364,7 @@ class Money(object):
         self.__update_at = update_at
 
     def to_dict(self):
-        return { 
+        return {
             "moneyId": self.__money_id,
             "ownerId": self.__owner_id,
             "name": self.__name,

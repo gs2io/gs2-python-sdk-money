@@ -17,7 +17,7 @@
 from gs2_money_client.model import *
 
 
-class GetWalletResult(object):
+class GetWalletByUserIdResult(object):
 
     def __init__(self, response):
         """

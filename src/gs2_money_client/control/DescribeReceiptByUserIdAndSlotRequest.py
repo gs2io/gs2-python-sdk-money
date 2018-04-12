@@ -18,10 +18,10 @@ from gs2_core_client.Gs2BasicRequest import Gs2BasicRequest
 from gs2_money_client.Gs2Money import Gs2Money
 
 
-class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
+class DescribeReceiptByUserIdAndSlotRequest(Gs2BasicRequest):
 
     class Constant(Gs2Money):
-        FUNCTION = "DescribeReceiptByUserAndSlot"
+        FUNCTION = "DescribeReceiptByUserIdAndSlot"
 
     def __init__(self, params=None):
         """
@@ -29,22 +29,34 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param params: 辞書配列形式のパラメータ初期値リスト
         :type params: dict|None
         """
-        super(DescribeReceiptByUserAndSlotRequest, self).__init__(params)
+        super(DescribeReceiptByUserIdAndSlotRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
-            self.__user_id = None
-            self.__slot = None
-            self.__begin = None
-            self.__end = None
-            self.__page_token = None
-            self.__limit = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
+        if params is None:
+            self.__user_id = None
+        else:
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
+            self.__slot = None
+        else:
             self.set_slot(params['slot'] if 'slot' in params.keys() else None)
+        if params is None:
+            self.__begin = None
+        else:
             self.set_begin(params['begin'] if 'begin' in params.keys() else None)
+        if params is None:
+            self.__end = None
+        else:
             self.set_end(params['end'] if 'end' in params.keys() else None)
+        if params is None:
+            self.__page_token = None
+        else:
             self.set_page_token(params['pageToken'] if 'pageToken' in params.keys() else None)
+        if params is None:
+            self.__limit = None
+        else:
             self.set_limit(params['limit'] if 'limit' in params.keys() else None)
 
     def get_money_name(self):
@@ -61,6 +73,8 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
+        if not isinstance(money_name, unicode):
+            raise TypeError(type(money_name))
         self.__money_name = money_name
 
     def with_money_name(self, money_name):
@@ -69,7 +83,7 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         :return: this
-        :rtype: DescribeReceiptByUserAndSlotRequest
+        :rtype: DescribeReceiptByUserIdAndSlotRequest
         """
         self.set_money_name(money_name)
         return self
@@ -88,6 +102,8 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param user_id: ユーザID
         :type user_id: unicode
         """
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -96,7 +112,7 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param user_id: ユーザID
         :type user_id: unicode
         :return: this
-        :rtype: DescribeReceiptByUserAndSlotRequest
+        :rtype: DescribeReceiptByUserIdAndSlotRequest
         """
         self.set_user_id(user_id)
         return self
@@ -115,6 +131,8 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param slot: スロット番号
         :type slot: int
         """
+        if not isinstance(slot, int):
+            raise TypeError(type(slot))
         self.__slot = slot
 
     def with_slot(self, slot):
@@ -123,7 +141,7 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param slot: スロット番号
         :type slot: int
         :return: this
-        :rtype: DescribeReceiptByUserAndSlotRequest
+        :rtype: DescribeReceiptByUserIdAndSlotRequest
         """
         self.set_slot(slot)
         return self
@@ -142,6 +160,8 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param begin: データの取得開始日時(エポック秒)
         :type begin: int
         """
+        if not isinstance(begin, int):
+            raise TypeError(type(begin))
         self.__begin = begin
 
     def with_begin(self, begin):
@@ -150,7 +170,7 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param begin: データの取得開始日時(エポック秒)
         :type begin: int
         :return: this
-        :rtype: DescribeReceiptByUserAndSlotRequest
+        :rtype: DescribeReceiptByUserIdAndSlotRequest
         """
         self.set_begin(begin)
         return self
@@ -169,6 +189,8 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param end: データの取得終了日時(エポック秒)
         :type end: int
         """
+        if not isinstance(end, int):
+            raise TypeError(type(end))
         self.__end = end
 
     def with_end(self, end):
@@ -177,7 +199,7 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param end: データの取得終了日時(エポック秒)
         :type end: int
         :return: this
-        :rtype: DescribeReceiptByUserAndSlotRequest
+        :rtype: DescribeReceiptByUserIdAndSlotRequest
         """
         self.set_end(end)
         return self
@@ -196,6 +218,8 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
+        if not isinstance(page_token, unicode):
+            raise TypeError(type(page_token))
         self.__page_token = page_token
 
     def with_page_token(self, page_token):
@@ -204,7 +228,7 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         :return: this
-        :rtype: DescribeReceiptByUserAndSlotRequest
+        :rtype: DescribeReceiptByUserIdAndSlotRequest
         """
         self.set_page_token(page_token)
         return self
@@ -223,6 +247,8 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         """
+        if not isinstance(limit, int):
+            raise TypeError(type(limit))
         self.__limit = limit
 
     def with_limit(self, limit):
@@ -231,7 +257,7 @@ class DescribeReceiptByUserAndSlotRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         :return: this
-        :rtype: DescribeReceiptByUserAndSlotRequest
+        :rtype: DescribeReceiptByUserIdAndSlotRequest
         """
         self.set_limit(limit)
         return self

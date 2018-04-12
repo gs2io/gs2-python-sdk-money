@@ -18,10 +18,10 @@ from gs2_core_client.Gs2BasicRequest import Gs2BasicRequest
 from gs2_money_client.Gs2Money import Gs2Money
 
 
-class DeletePlatformedItemRequest(Gs2BasicRequest):
+class GetWalletByUserIdRequest(Gs2BasicRequest):
 
     class Constant(Gs2Money):
-        FUNCTION = "DeletePlatformedItem"
+        FUNCTION = "GetWalletByUserId"
 
     def __init__(self, params=None):
         """
@@ -29,19 +29,19 @@ class DeletePlatformedItemRequest(Gs2BasicRequest):
         :param params: 辞書配列形式のパラメータ初期値リスト
         :type params: dict|None
         """
-        super(DeletePlatformedItemRequest, self).__init__(params)
+        super(GetWalletByUserIdRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
         if params is None:
-            self.__item_name = None
+            self.__slot = None
         else:
-            self.set_item_name(params['itemName'] if 'itemName' in params.keys() else None)
+            self.set_slot(params['slot'] if 'slot' in params.keys() else None)
         if params is None:
-            self.__platform = None
+            self.__user_id = None
         else:
-            self.set_platform(params['platform'] if 'platform' in params.keys() else None)
+            self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
 
     def get_money_name(self):
         """
@@ -67,65 +67,65 @@ class DeletePlatformedItemRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         :return: this
-        :rtype: DeletePlatformedItemRequest
+        :rtype: GetWalletByUserIdRequest
         """
         self.set_money_name(money_name)
         return self
 
-    def get_item_name(self):
+    def get_slot(self):
         """
-        商品の名前を取得
-        :return: 商品の名前
-        :rtype: unicode
+        ウォレットのスロット番号を取得
+        :return: ウォレットのスロット番号
+        :rtype: int
         """
-        return self.__item_name
+        return self.__slot
 
-    def set_item_name(self, item_name):
+    def set_slot(self, slot):
         """
-        商品の名前を設定
-        :param item_name: 商品の名前
-        :type item_name: unicode
+        ウォレットのスロット番号を設定
+        :param slot: ウォレットのスロット番号
+        :type slot: int
         """
-        if not isinstance(item_name, unicode):
-            raise TypeError(type(item_name))
-        self.__item_name = item_name
+        if not isinstance(slot, int):
+            raise TypeError(type(slot))
+        self.__slot = slot
 
-    def with_item_name(self, item_name):
+    def with_slot(self, slot):
         """
-        商品の名前を設定
-        :param item_name: 商品の名前
-        :type item_name: unicode
+        ウォレットのスロット番号を設定
+        :param slot: ウォレットのスロット番号
+        :type slot: int
         :return: this
-        :rtype: DeletePlatformedItemRequest
+        :rtype: GetWalletByUserIdRequest
         """
-        self.set_item_name(item_name)
+        self.set_slot(slot)
         return self
 
-    def get_platform(self):
+    def get_user_id(self):
         """
-        プラットフォームの名前を取得
-        :return: プラットフォームの名前
+        ユーザIDを取得
+        :return: ユーザID
         :rtype: unicode
         """
-        return self.__platform
+        return self.__user_id
 
-    def set_platform(self, platform):
+    def set_user_id(self, user_id):
         """
-        プラットフォームの名前を設定
-        :param platform: プラットフォームの名前
-        :type platform: unicode
+        ユーザIDを設定
+        :param user_id: ユーザID
+        :type user_id: unicode
         """
-        if not isinstance(platform, unicode):
-            raise TypeError(type(platform))
-        self.__platform = platform
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
+        self.__user_id = user_id
 
-    def with_platform(self, platform):
+    def with_user_id(self, user_id):
         """
-        プラットフォームの名前を設定
-        :param platform: プラットフォームの名前
-        :type platform: unicode
+        ユーザIDを設定
+        :param user_id: ユーザID
+        :type user_id: unicode
         :return: this
-        :rtype: DeletePlatformedItemRequest
+        :rtype: GetWalletByUserIdRequest
         """
-        self.set_platform(platform)
+        self.set_user_id(user_id)
         return self

@@ -32,15 +32,23 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         super(CreatePlatformedItemRequest, self).__init__(params)
         if params is None:
             self.__money_name = None
-            self.__item_name = None
-            self.__platform = None
-            self.__name = None
-            self.__price = None
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
+        if params is None:
+            self.__item_name = None
+        else:
             self.set_item_name(params['itemName'] if 'itemName' in params.keys() else None)
+        if params is None:
+            self.__platform = None
+        else:
             self.set_platform(params['platform'] if 'platform' in params.keys() else None)
+        if params is None:
+            self.__name = None
+        else:
             self.set_name(params['name'] if 'name' in params.keys() else None)
+        if params is None:
+            self.__price = None
+        else:
             self.set_price(params['price'] if 'price' in params.keys() else None)
 
     def get_money_name(self):
@@ -57,6 +65,8 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
+        if not isinstance(money_name, unicode):
+            raise TypeError(type(money_name))
         self.__money_name = money_name
 
     def with_money_name(self, money_name):
@@ -84,6 +94,8 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param item_name: 商品の名前
         :type item_name: unicode
         """
+        if not isinstance(item_name, unicode):
+            raise TypeError(type(item_name))
         self.__item_name = item_name
 
     def with_item_name(self, item_name):
@@ -111,6 +123,8 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param platform: 販売プラットフォーム
         :type platform: unicode
         """
+        if not isinstance(platform, unicode):
+            raise TypeError(type(platform))
         self.__platform = platform
 
     def with_platform(self, platform):
@@ -138,6 +152,8 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param name: アプリ内課金ID
         :type name: unicode
         """
+        if not isinstance(name, unicode):
+            raise TypeError(type(name))
         self.__name = name
 
     def with_name(self, name):
@@ -165,6 +181,8 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param price: 販売価格
         :type price: float
         """
+        if not isinstance(price, float):
+            raise TypeError(type(price))
         self.__price = price
 
     def with_price(self, price):
