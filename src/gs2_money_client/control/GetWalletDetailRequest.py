@@ -57,7 +57,7 @@ class GetWalletDetailRequest(Gs2BasicRequest):
         :param money_name: 取得する仮想通貨の名前
         :type money_name: unicode
         """
-        if not isinstance(money_name, unicode):
+        if money_name and not isinstance(money_name, unicode):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -86,7 +86,7 @@ class GetWalletDetailRequest(Gs2BasicRequest):
         :param slot: 取得するウォレットのスロット番号
         :type slot: int
         """
-        if not isinstance(slot, int):
+        if slot and not isinstance(slot, int):
             raise TypeError(type(slot))
         self.__slot = slot
 
@@ -115,7 +115,7 @@ class GetWalletDetailRequest(Gs2BasicRequest):
         :param user_id: ユーザID
         :type user_id: unicode
         """
-        if not isinstance(user_id, unicode):
+        if user_id and not isinstance(user_id, unicode):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 

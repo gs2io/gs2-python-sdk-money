@@ -57,7 +57,7 @@ class ChargeWalletRequest(Gs2UserRequest):
         :param money_name: 取得する仮想通貨の名前
         :type money_name: unicode
         """
-        if not isinstance(money_name, unicode):
+        if money_name and not isinstance(money_name, unicode):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -86,7 +86,7 @@ class ChargeWalletRequest(Gs2UserRequest):
         :param slot: 取得するウォレットのスロット番号
         :type slot: int
         """
-        if not isinstance(slot, int):
+        if slot and not isinstance(slot, int):
             raise TypeError(type(slot))
         self.__slot = slot
 
@@ -115,7 +115,7 @@ class ChargeWalletRequest(Gs2UserRequest):
         :param price: 支払金額
         :type price: float
         """
-        if not isinstance(price, float):
+        if price and not isinstance(price, float):
             raise TypeError(type(price))
         self.__price = price
 
@@ -144,7 +144,7 @@ class ChargeWalletRequest(Gs2UserRequest):
         :param count: 仮想通貨付与量
         :type count: int
         """
-        if not isinstance(count, int):
+        if count and not isinstance(count, int):
             raise TypeError(type(count))
         self.__count = count
 
@@ -173,7 +173,7 @@ class ChargeWalletRequest(Gs2UserRequest):
         :param transaction_id: トランザクションID
         :type transaction_id: unicode
         """
-        if not isinstance(transaction_id, unicode):
+        if transaction_id and not isinstance(transaction_id, unicode):
             raise TypeError(type(transaction_id))
         self.__transaction_id = transaction_id
 

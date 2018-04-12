@@ -93,7 +93,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param money_name: 取得する仮想通貨の名前
         :type money_name: unicode
         """
-        if not isinstance(money_name, unicode):
+        if money_name and not isinstance(money_name, unicode):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -122,7 +122,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param description: 説明文(1024文字以内)
         :type description: unicode
         """
-        if not isinstance(description, unicode):
+        if description and not isinstance(description, unicode):
             raise TypeError(type(description))
         self.__description = description
 
@@ -151,7 +151,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param priority: 支払い優先度
         :type priority: unicode
         """
-        if not isinstance(priority, unicode):
+        if priority and not isinstance(priority, unicode):
             raise TypeError(type(priority))
         self.__priority = priority
 
@@ -180,7 +180,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param use_verify_receipt: ストアプラットフォームのレシートの検証機能を利用するか
         :type use_verify_receipt: bool
         """
-        if not isinstance(use_verify_receipt, bool):
+        if use_verify_receipt and not isinstance(use_verify_receipt, bool):
             raise TypeError(type(use_verify_receipt))
         self.__use_verify_receipt = use_verify_receipt
 
@@ -209,7 +209,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param apple_key: Apple のアプリケーションバンドルID
         :type apple_key: unicode
         """
-        if not isinstance(apple_key, unicode):
+        if apple_key and not isinstance(apple_key, unicode):
             raise TypeError(type(apple_key))
         self.__apple_key = apple_key
 
@@ -238,7 +238,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param google_key: Google のレシート検証用公開鍵
         :type google_key: unicode
         """
-        if not isinstance(google_key, unicode):
+        if google_key and not isinstance(google_key, unicode):
             raise TypeError(type(google_key))
         self.__google_key = google_key
 
@@ -267,7 +267,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param create_wallet_trigger_script: ウォレット新規作成時 に実行されるGS2-Script
         :type create_wallet_trigger_script: unicode
         """
-        if not isinstance(create_wallet_trigger_script, unicode):
+        if create_wallet_trigger_script and not isinstance(create_wallet_trigger_script, unicode):
             raise TypeError(type(create_wallet_trigger_script))
         self.__create_wallet_trigger_script = create_wallet_trigger_script
 
@@ -296,7 +296,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param create_wallet_done_trigger_script: ウォレット新規作成完了時 に実行されるGS2-Script
         :type create_wallet_done_trigger_script: unicode
         """
-        if not isinstance(create_wallet_done_trigger_script, unicode):
+        if create_wallet_done_trigger_script and not isinstance(create_wallet_done_trigger_script, unicode):
             raise TypeError(type(create_wallet_done_trigger_script))
         self.__create_wallet_done_trigger_script = create_wallet_done_trigger_script
 
@@ -325,7 +325,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param charge_wallet_trigger_script: ウォレット残高加算時 に実行されるGS2-Script
         :type charge_wallet_trigger_script: unicode
         """
-        if not isinstance(charge_wallet_trigger_script, unicode):
+        if charge_wallet_trigger_script and not isinstance(charge_wallet_trigger_script, unicode):
             raise TypeError(type(charge_wallet_trigger_script))
         self.__charge_wallet_trigger_script = charge_wallet_trigger_script
 
@@ -354,7 +354,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param charge_wallet_done_trigger_script: ウォレット残高加算完了時 に実行されるGS2-Script
         :type charge_wallet_done_trigger_script: unicode
         """
-        if not isinstance(charge_wallet_done_trigger_script, unicode):
+        if charge_wallet_done_trigger_script and not isinstance(charge_wallet_done_trigger_script, unicode):
             raise TypeError(type(charge_wallet_done_trigger_script))
         self.__charge_wallet_done_trigger_script = charge_wallet_done_trigger_script
 
@@ -383,7 +383,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param consume_wallet_trigger_script: ウォレット残高消費時 に実行されるGS2-Script
         :type consume_wallet_trigger_script: unicode
         """
-        if not isinstance(consume_wallet_trigger_script, unicode):
+        if consume_wallet_trigger_script and not isinstance(consume_wallet_trigger_script, unicode):
             raise TypeError(type(consume_wallet_trigger_script))
         self.__consume_wallet_trigger_script = consume_wallet_trigger_script
 
@@ -412,7 +412,7 @@ class UpdateMoneyRequest(Gs2BasicRequest):
         :param consume_wallet_done_trigger_script: ウォレット残高消費完了時 に実行されるGS2-Script
         :type consume_wallet_done_trigger_script: unicode
         """
-        if not isinstance(consume_wallet_done_trigger_script, unicode):
+        if consume_wallet_done_trigger_script and not isinstance(consume_wallet_done_trigger_script, unicode):
             raise TypeError(type(consume_wallet_done_trigger_script))
         self.__consume_wallet_done_trigger_script = consume_wallet_done_trigger_script
 
