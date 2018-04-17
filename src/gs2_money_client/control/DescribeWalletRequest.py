@@ -35,6 +35,10 @@ class DescribeWalletRequest(Gs2BasicRequest):
         else:
             self.set_money_name(params['moneyName'] if 'moneyName' in params.keys() else None)
         if params is None:
+            self.__user_id = None
+        else:
+            self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
             self.__page_token = None
         else:
             self.set_page_token(params['pageToken'] if 'pageToken' in params.keys() else None)
@@ -42,10 +46,6 @@ class DescribeWalletRequest(Gs2BasicRequest):
             self.__limit = None
         else:
             self.set_limit(params['limit'] if 'limit' in params.keys() else None)
-        if params is None:
-            self.__user_id = None
-        else:
-            self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
 
     def get_money_name(self):
         """
@@ -61,7 +61,7 @@ class DescribeWalletRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
-        if money_name and not isinstance(money_name, unicode):
+        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -74,6 +74,35 @@ class DescribeWalletRequest(Gs2BasicRequest):
         :rtype: DescribeWalletRequest
         """
         self.set_money_name(money_name)
+        return self
+
+    def get_user_id(self):
+        """
+        ユーザIDで対象のウォレットを絞り込む場合を取得
+        :return: ユーザIDで対象のウォレットを絞り込む場合
+        :rtype: unicode
+        """
+        return self.__user_id
+
+    def set_user_id(self, user_id):
+        """
+        ユーザIDで対象のウォレットを絞り込む場合を設定
+        :param user_id: ユーザIDで対象のウォレットを絞り込む場合
+        :type user_id: unicode
+        """
+        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
+            raise TypeError(type(user_id))
+        self.__user_id = user_id
+
+    def with_user_id(self, user_id):
+        """
+        ユーザIDで対象のウォレットを絞り込む場合を設定
+        :param user_id: ユーザIDで対象のウォレットを絞り込む場合
+        :type user_id: unicode
+        :return: this
+        :rtype: DescribeWalletRequest
+        """
+        self.set_user_id(user_id)
         return self
 
     def get_page_token(self):
@@ -90,7 +119,7 @@ class DescribeWalletRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
-        if page_token and not isinstance(page_token, unicode):
+        if page_token and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
             raise TypeError(type(page_token))
         self.__page_token = page_token
 
@@ -132,33 +161,4 @@ class DescribeWalletRequest(Gs2BasicRequest):
         :rtype: DescribeWalletRequest
         """
         self.set_limit(limit)
-        return self
-
-    def get_user_id(self):
-        """
-        ユーザIDで対象のウォレットを絞り込む場合を取得
-        :return: ユーザIDで対象のウォレットを絞り込む場合
-        :rtype: unicode
-        """
-        return self.__user_id
-
-    def set_user_id(self, user_id):
-        """
-        ユーザIDで対象のウォレットを絞り込む場合を設定
-        :param user_id: ユーザIDで対象のウォレットを絞り込む場合
-        :type user_id: unicode
-        """
-        if user_id and not isinstance(user_id, unicode):
-            raise TypeError(type(user_id))
-        self.__user_id = user_id
-
-    def with_user_id(self, user_id):
-        """
-        ユーザIDで対象のウォレットを絞り込む場合を設定
-        :param user_id: ユーザIDで対象のウォレットを絞り込む場合
-        :type user_id: unicode
-        :return: this
-        :rtype: DescribeWalletRequest
-        """
-        self.set_user_id(user_id)
         return self

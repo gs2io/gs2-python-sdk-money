@@ -785,9 +785,9 @@ class Gs2MoneyClient(AbstractGs2Client):
         :rtype: gs2_money_client.control.DescribeWalletResult.DescribeWalletResult
         """
         query_strings = {
+            'userId': request.get_user_id(),
             'pageToken': request.get_page_token(),
             'limit': request.get_limit(),
-            'userId': request.get_user_id(),
         }
         headers = { 
         }

@@ -53,7 +53,7 @@ class VerifyRequest(Gs2UserRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
-        if money_name and not isinstance(money_name, unicode):
+        if _money_name and not (isinstance(_money_name, str) or isinstance(_money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -82,7 +82,7 @@ class VerifyRequest(Gs2UserRequest):
         :param slot: スロット番号
         :type slot: int
         """
-        if slot and not isinstance(slot, int):
+        if _slot and not isinstance(_slot, int):
             raise TypeError(type(slot))
         self.__slot = slot
 
@@ -111,7 +111,7 @@ class VerifyRequest(Gs2UserRequest):
         :param receipt: レシートデータ
         :type receipt: unicode
         """
-        if receipt and not isinstance(receipt, unicode):
+        if _receipt and not (isinstance(_receipt, str) or isinstance(_receipt, unicode)):
             raise TypeError(type(receipt))
         self.__receipt = receipt
 

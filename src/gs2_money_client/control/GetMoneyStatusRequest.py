@@ -49,7 +49,7 @@ class GetMoneyStatusRequest(Gs2BasicRequest):
         :param money_name: 取得する仮想通貨の名前
         :type money_name: unicode
         """
-        if money_name and not isinstance(money_name, unicode):
+        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 

@@ -69,7 +69,7 @@ class ChargeWalletByUserIdRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
-        if money_name and not isinstance(money_name, unicode):
+        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -127,7 +127,7 @@ class ChargeWalletByUserIdRequest(Gs2BasicRequest):
         :param user_id: ウォレットのユーザID
         :type user_id: unicode
         """
-        if user_id and not isinstance(user_id, unicode):
+        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -214,7 +214,7 @@ class ChargeWalletByUserIdRequest(Gs2BasicRequest):
         :param transaction_id: トランザクションID
         :type transaction_id: unicode
         """
-        if transaction_id and not isinstance(transaction_id, unicode):
+        if transaction_id and not (isinstance(transaction_id, str) or isinstance(transaction_id, unicode)):
             raise TypeError(type(transaction_id))
         self.__transaction_id = transaction_id
 

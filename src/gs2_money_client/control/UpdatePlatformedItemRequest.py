@@ -65,7 +65,7 @@ class UpdatePlatformedItemRequest(Gs2BasicRequest):
         :param money_name: 仮想通貨の名前
         :type money_name: unicode
         """
-        if money_name and not isinstance(money_name, unicode):
+        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -94,7 +94,7 @@ class UpdatePlatformedItemRequest(Gs2BasicRequest):
         :param item_name: 商品の名前
         :type item_name: unicode
         """
-        if item_name and not isinstance(item_name, unicode):
+        if item_name and not (isinstance(item_name, str) or isinstance(item_name, unicode)):
             raise TypeError(type(item_name))
         self.__item_name = item_name
 
@@ -123,7 +123,7 @@ class UpdatePlatformedItemRequest(Gs2BasicRequest):
         :param platform: プラットフォームの名前
         :type platform: unicode
         """
-        if platform and not isinstance(platform, unicode):
+        if platform and not (isinstance(platform, str) or isinstance(platform, unicode)):
             raise TypeError(type(platform))
         self.__platform = platform
 
@@ -152,7 +152,7 @@ class UpdatePlatformedItemRequest(Gs2BasicRequest):
         :param name: アプリ内課金ID
         :type name: unicode
         """
-        if name and not isinstance(name, unicode):
+        if name and not (isinstance(name, str) or isinstance(name, unicode)):
             raise TypeError(type(name))
         self.__name = name
 
