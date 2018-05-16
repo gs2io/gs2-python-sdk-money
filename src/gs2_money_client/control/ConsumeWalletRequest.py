@@ -57,7 +57,7 @@ class ConsumeWalletRequest(Gs2UserRequest):
         :param money_name: 取得する仮想通貨の名前
         :type money_name: unicode
         """
-        if _money_name and not (isinstance(_money_name, str) or isinstance(_money_name, unicode)):
+        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -86,7 +86,7 @@ class ConsumeWalletRequest(Gs2UserRequest):
         :param slot: 取得するウォレットのスロット番号
         :type slot: int
         """
-        if _slot and not isinstance(_slot, int):
+        if slot and not isinstance(slot, int):
             raise TypeError(type(slot))
         self.__slot = slot
 
@@ -115,7 +115,7 @@ class ConsumeWalletRequest(Gs2UserRequest):
         :param count: 仮想通貨消費量
         :type count: int
         """
-        if _count and not isinstance(_count, int):
+        if count and not isinstance(count, int):
             raise TypeError(type(count))
         self.__count = count
 
@@ -144,7 +144,7 @@ class ConsumeWalletRequest(Gs2UserRequest):
         :param use: 用途ID
         :type use: int
         """
-        if _use and not isinstance(_use, int):
+        if use and not isinstance(use, int):
             raise TypeError(type(use))
         self.__use = use
 
@@ -173,7 +173,7 @@ class ConsumeWalletRequest(Gs2UserRequest):
         :param paid_only: 有償仮想通貨のみ消費対象としたい場合に true を指定します
         :type paid_only: bool
         """
-        if _paid_only and not isinstance(_paid_only, bool):
+        if paid_only and not isinstance(paid_only, bool):
             raise TypeError(type(paid_only))
         self.__paid_only = paid_only
 
