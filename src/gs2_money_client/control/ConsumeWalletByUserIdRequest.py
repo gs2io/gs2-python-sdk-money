@@ -57,16 +57,16 @@ class ConsumeWalletByUserIdRequest(Gs2BasicRequest):
 
     def get_money_name(self):
         """
-        取得する仮想通貨の名前を取得
-        :return: 取得する仮想通貨の名前
+        取得する課金通貨の名前を取得
+        :return: 取得する課金通貨の名前
         :rtype: unicode
         """
         return self.__money_name
 
     def set_money_name(self, money_name):
         """
-        取得する仮想通貨の名前を設定
-        :param money_name: 取得する仮想通貨の名前
+        取得する課金通貨の名前を設定
+        :param money_name: 取得する課金通貨の名前
         :type money_name: unicode
         """
         if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
@@ -75,8 +75,8 @@ class ConsumeWalletByUserIdRequest(Gs2BasicRequest):
 
     def with_money_name(self, money_name):
         """
-        取得する仮想通貨の名前を設定
-        :param money_name: 取得する仮想通貨の名前
+        取得する課金通貨の名前を設定
+        :param money_name: 取得する課金通貨の名前
         :type money_name: unicode
         :return: this
         :rtype: ConsumeWalletByUserIdRequest
@@ -144,16 +144,16 @@ class ConsumeWalletByUserIdRequest(Gs2BasicRequest):
 
     def get_count(self):
         """
-        仮想通貨消費量を取得
-        :return: 仮想通貨消費量
+        課金通貨消費量を取得
+        :return: 課金通貨消費量
         :rtype: int
         """
         return self.__count
 
     def set_count(self, count):
         """
-        仮想通貨消費量を設定
-        :param count: 仮想通貨消費量
+        課金通貨消費量を設定
+        :param count: 課金通貨消費量
         :type count: int
         """
         if count and not isinstance(count, int):
@@ -162,8 +162,8 @@ class ConsumeWalletByUserIdRequest(Gs2BasicRequest):
 
     def with_count(self, count):
         """
-        仮想通貨消費量を設定
-        :param count: 仮想通貨消費量
+        課金通貨消費量を設定
+        :param count: 課金通貨消費量
         :type count: int
         :return: this
         :rtype: ConsumeWalletByUserIdRequest
@@ -202,16 +202,16 @@ class ConsumeWalletByUserIdRequest(Gs2BasicRequest):
 
     def get_paid_only(self):
         """
-        有償仮想通貨のみ消費対象としたい場合に true を指定しますを取得
-        :return: 有償仮想通貨のみ消費対象としたい場合に true を指定します
+        有償課金通貨のみ消費対象としたい場合に true を指定しますを取得
+        :return: 有償課金通貨のみ消費対象としたい場合に true を指定します
         :rtype: bool
         """
         return self.__paid_only
 
     def set_paid_only(self, paid_only):
         """
-        有償仮想通貨のみ消費対象としたい場合に true を指定しますを設定
-        :param paid_only: 有償仮想通貨のみ消費対象としたい場合に true を指定します
+        有償課金通貨のみ消費対象としたい場合に true を指定しますを設定
+        :param paid_only: 有償課金通貨のみ消費対象としたい場合に true を指定します
         :type paid_only: bool
         """
         if paid_only and not isinstance(paid_only, bool):
@@ -220,8 +220,8 @@ class ConsumeWalletByUserIdRequest(Gs2BasicRequest):
 
     def with_paid_only(self, paid_only):
         """
-        有償仮想通貨のみ消費対象としたい場合に true を指定しますを設定
-        :param paid_only: 有償仮想通貨のみ消費対象としたい場合に true を指定します
+        有償課金通貨のみ消費対象としたい場合に true を指定しますを設定
+        :param paid_only: 有償課金通貨のみ消費対象としたい場合に true を指定します
         :type paid_only: bool
         :return: this
         :rtype: ConsumeWalletByUserIdRequest

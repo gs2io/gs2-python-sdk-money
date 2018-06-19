@@ -26,7 +26,6 @@ class CreateItemResult(object):
         :type response: dict
         """
         self.__item = Item(response['item']) if 'item' in response.keys() and response['item'] is not None else None
-
     def get_item(self):
         """
         商品を取得
@@ -34,6 +33,12 @@ class CreateItemResult(object):
         :rtype: Item
         """
         return self.__item
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(CreateItemResult, self).__getitem__(key)
 
     def to_dict(self):
         """

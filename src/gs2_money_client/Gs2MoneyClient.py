@@ -38,10 +38,10 @@ class Gs2MoneyClient(AbstractGs2Client):
         商品を新規作成します<br>
         <br>
         このデータは GS2-Money のレシート検証機能を利用するときにのみ登録する必要があります。<br>
-        これはレシート検証の結果妥当だった場合対価として仮想通貨を付与するために、<br>
-        どのような価値の仮想通貨をいくらで販売しているのかという情報を GS2-Money が持っていなければサービスを実現できないためです。<br>
+        これはレシート検証の結果妥当だった場合対価として課金通貨を付与するために、<br>
+        どのような価値の課金通貨をいくらで販売しているのかという情報を GS2-Money が持っていなければサービスを実現できないためです。<br>
         <br>
-        - 商品(仮想通貨 60個)<br>
+        - 商品(課金通貨 60個)<br>
         -- プラットフォーム個別商品(AppleAppStore 120円)<br>
         -- プラットフォーム個別商品(GooglePlay 120円)<br>
         <br>
@@ -177,26 +177,26 @@ class Gs2MoneyClient(AbstractGs2Client):
 
     def create_money(self, request):
         """
-        仮想通貨を新規作成します<br>
+        課金通貨を新規作成します<br>
         <br>
-        priority には仮想通貨の消費優先度を指定することが出来ます。<br>
-        無償仮想通貨を優先して消費する場合は free を、有償仮想通貨を優先して消費する場合は paid を指定します。<br>
-        資金決済法への対応としては有償仮想通貨を優先して消費するほうが未使用残高が溜まりにくく効率的ですが、<br>
-        有償仮想通貨でしか購入できないアイテムを提供している場合はユーザの心象は悪いかもしれません。<br>
+        priority には課金通貨の消費優先度を指定することが出来ます。<br>
+        無償課金通貨を優先して消費する場合は free を、有償課金通貨を優先して消費する場合は paid を指定します。<br>
+        資金決済法への対応としては有償課金通貨を優先して消費するほうが未使用残高が溜まりにくく効率的ですが、<br>
+        有償課金通貨でしか購入できないアイテムを提供している場合はユーザの心象は悪いかもしれません。<br>
         <br>
-        ユーザごとにウォレットという財布のようなものを用意し、仮想通貨はそこにチャージされます。<br>
+        ユーザごとにウォレットという財布のようなものを用意し、課金通貨はそこにチャージされます。<br>
         ウォレットにはスロットという概念があり、各ユーザ複数の財布を持つことが出来ます。<br>
-        これはガイドラインによってプラットフォームごとに仮想通貨を分けて管理する必要があるためです。<br>
-        このガイドラインは有償仮想通貨にのみ適用される者で、無償仮想通貨はその義務は生じません。<br>
-        そのため shareFree という設定値があり、ここを true に設定することですべてのスロットで無償仮想通貨を共有することができるようになります。<br>
-        この際、あらゆるスロットにアクセスしても無償仮想通貨に関してはスロット0の仮想通貨が利用される。という挙動を取ります。<br>
+        これはガイドラインによってプラットフォームごとに課金通貨を分けて管理する必要があるためです。<br>
+        このガイドラインは有償課金通貨にのみ適用される者で、無償課金通貨はその義務は生じません。<br>
+        そのため shareFree という設定値があり、ここを true に設定することですべてのスロットで無償課金通貨を共有することができるようになります。<br>
+        この際、あらゆるスロットにアクセスしても無償課金通貨に関してはスロット0の課金通貨が利用される。という挙動を取ります。<br>
         <br>
         useVerifyReceipt で課金時に各プラットフォームから取得できるレシートを検証する機能を利用できるようになります。<br>
         レシートの検証機能を利用する場合は各プラットフォームごとに検証に必要な要素を登録しておく必要があります。<br>
         <br>
         AppleAppStore におけるレシートの検証を実現するには appleKey を指定します。<br>
         appleKey にはアプリケーションの bundle_id を指定してください。<br>
-        異なるアプリケーションで決済されたトランザクションで仮想通貨をチャージすることを防ぐ意味があります。<br>
+        異なるアプリケーションで決済されたトランザクションで課金通貨をチャージすることを防ぐ意味があります。<br>
         <br>
         GooglePlay におけるレシートの検証を実現するには googleKey を指定します。<br>
         googleKey には Google Play Developer Console で取得できる公開鍵を指定してください。<br>
@@ -213,14 +213,14 @@ class Gs2MoneyClient(AbstractGs2Client):
         """
         body = { 
             "name": request.get_name(),
-            "description": request.get_description(),
             "priority": request.get_priority(),
             "shareFree": request.get_share_free(),
+            "currency": request.get_currency(),
             "useVerifyReceipt": request.get_use_verify_receipt(),
         }
 
-        if request.get_currency() is not None:
-            body["currency"] = request.get_currency()
+        if request.get_description() is not None:
+            body["description"] = request.get_description()
         if request.get_apple_key() is not None:
             body["appleKey"] = request.get_apple_key()
         if request.get_google_key() is not None:
@@ -254,7 +254,7 @@ class Gs2MoneyClient(AbstractGs2Client):
 
     def delete_money(self, request):
         """
-        仮想通貨を削除します<br>
+        課金通貨を削除します<br>
         <br>
         :param request: リクエストパラメータ
         :type request: gs2_money_client.control.DeleteMoneyRequest.DeleteMoneyRequest
@@ -276,7 +276,7 @@ class Gs2MoneyClient(AbstractGs2Client):
 
     def describe_money(self, request):
         """
-        仮想通貨の一覧を取得します<br>
+        課金通貨の一覧を取得します<br>
         <br>:param request: リクエストパラメータ
         :type request: gs2_money_client.control.DescribeMoneyRequest.DescribeMoneyRequest
         :return: 結果
@@ -304,7 +304,7 @@ class Gs2MoneyClient(AbstractGs2Client):
 
     def get_money(self, request):
         """
-        仮想通貨を取得します<br>
+        課金通貨を取得します<br>
         <br>:param request: リクエストパラメータ
         :type request: gs2_money_client.control.GetMoneyRequest.GetMoneyRequest
         :return: 結果
@@ -330,7 +330,7 @@ class Gs2MoneyClient(AbstractGs2Client):
 
     def get_money_status(self, request):
         """
-        仮想通貨の状態を取得します<br>
+        課金通貨の状態を取得します<br>
         <br>:param request: リクエストパラメータ
         :type request: gs2_money_client.control.GetMoneyStatusRequest.GetMoneyStatusRequest
         :return: 結果
@@ -356,7 +356,7 @@ class Gs2MoneyClient(AbstractGs2Client):
 
     def update_money(self, request):
         """
-        仮想通貨を更新します<br>
+        課金通貨を更新します<br>
         <br>
         :param request: リクエストパラメータ
         :type request: gs2_money_client.control.UpdateMoneyRequest.UpdateMoneyRequest
@@ -364,10 +364,11 @@ class Gs2MoneyClient(AbstractGs2Client):
         :rtype: gs2_money_client.control.UpdateMoneyResult.UpdateMoneyResult
         """
         body = { 
-            "description": request.get_description(),
             "priority": request.get_priority(),
             "useVerifyReceipt": request.get_use_verify_receipt(),
         }
+        if request.get_description() is not None:
+            body["description"] = request.get_description()
         if request.get_apple_key() is not None:
             body["appleKey"] = request.get_apple_key()
         if request.get_google_key() is not None:
@@ -599,10 +600,11 @@ class Gs2MoneyClient(AbstractGs2Client):
         """
         レシートを検証する<br>
         <br>
-        下記フォーマットのレシートをPOSTすることでレシートを検証し、仮想通貨のチャージまでアトミックに実行できます。<br>
+        下記フォーマットのレシートをPOSTすることでレシートを検証し、課金通貨のチャージまでアトミックに実行できます。<br>
         {<br>
-          'Store': ストア名,<br>
-          'Payload': レシート本体<br>
+          "Store": ストア名,<br>
+          "TransactionID": トランザクションID,<br>
+          "Payload": レシート本体<br>
         }<br>
         <br>
         現在ストア名には<br>
@@ -636,12 +638,45 @@ class Gs2MoneyClient(AbstractGs2Client):
             headers=headers
         ))
 
+    def verify_by_stamp_task(self, request):
+        """
+        スタンプタスクを使用してレシートを検証する<br>
+        <br>
+        :param request: リクエストパラメータ
+        :type request: gs2_money_client.control.VerifyByStampTaskRequest.VerifyByStampTaskRequest
+        :return: 結果
+        :rtype: gs2_money_client.control.VerifyByStampTaskResult.VerifyByStampTaskResult
+        """
+        body = { 
+            "task": request.get_task(),
+            "keyName": request.get_key_name(),
+            "transactionId": request.get_transaction_id(),
+            "receipt": request.get_receipt(),
+            "slot": request.get_slot(),
+        }
+
+        headers = { 
+            "X-GS2-ACCESS-TOKEN": request.get_access_token()
+        }
+        if request.get_request_id() is not None:
+            headers["X-GS2-REQUEST-ID"] = request.get_request_id()
+        from gs2_money_client.control.VerifyByStampTaskRequest import VerifyByStampTaskRequest
+        from gs2_money_client.control.VerifyByStampTaskResult import VerifyByStampTaskResult
+        return VerifyByStampTaskResult(self._do_post_request(
+            url=Gs2Constant.ENDPOINT_HOST + "/verify/stampTask",
+            service=self.ENDPOINT,
+            component=VerifyByStampTaskRequest.Constant.MODULE,
+            target_function=VerifyByStampTaskRequest.Constant.FUNCTION,
+            body=body,
+            headers=headers
+        ))
+
     def charge_wallet(self, request):
         """
-        ウォレットに仮想通貨をチャージします<br>
+        ウォレットに課金通貨をチャージします<br>
         <br>
         trasactionId にトランザクションIDを指定することで、<br>
-        1回の課金処理で複数回仮想通貨をチャージすることを防ぐことが出来ます。<br>
+        1回の課金処理で複数回課金通貨をチャージすることを防ぐことが出来ます。<br>
         重複したリクエストが発生した場合は 409エラー(ConflictException) が発生しますが、正常処理とするべきです。<br>
         <br>
         :param request: リクエストパラメータ
@@ -672,12 +707,42 @@ class Gs2MoneyClient(AbstractGs2Client):
             headers=headers
         ))
 
+    def charge_wallet_by_stamp_sheet(self, request):
+        """
+        スタンプシートを使用してウォレットに課金通貨をチャージします<br>
+        <br>
+        :param request: リクエストパラメータ
+        :type request: gs2_money_client.control.ChargeWalletByStampSheetRequest.ChargeWalletByStampSheetRequest
+        :return: 結果
+        :rtype: gs2_money_client.control.ChargeWalletByStampSheetResult.ChargeWalletByStampSheetResult
+        """
+        body = { 
+            "sheet": request.get_sheet(),
+            "keyName": request.get_key_name(),
+        }
+
+        headers = { 
+            "X-GS2-ACCESS-TOKEN": request.get_access_token()
+        }
+        if request.get_request_id() is not None:
+            headers["X-GS2-REQUEST-ID"] = request.get_request_id()
+        from gs2_money_client.control.ChargeWalletByStampSheetRequest import ChargeWalletByStampSheetRequest
+        from gs2_money_client.control.ChargeWalletByStampSheetResult import ChargeWalletByStampSheetResult
+        return ChargeWalletByStampSheetResult(self._do_post_request(
+            url=Gs2Constant.ENDPOINT_HOST + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/stampSheet/charge",
+            service=self.ENDPOINT,
+            component=ChargeWalletByStampSheetRequest.Constant.MODULE,
+            target_function=ChargeWalletByStampSheetRequest.Constant.FUNCTION,
+            body=body,
+            headers=headers
+        ))
+
     def charge_wallet_by_user_id(self, request):
         """
-        ウォレットに仮想通貨をチャージします<br>
+        ウォレットに課金通貨をチャージします<br>
         <br>
         trasactionId にトランザクションIDを指定することで、<br>
-        1回の課金処理で複数回仮想通貨をチャージすることを防ぐことが出来ます。<br>
+        1回の課金処理で複数回課金通貨をチャージすることを防ぐことが出来ます。<br>
         重複したリクエストが発生した場合は 409エラー(ConflictException) が発生しますが、正常処理とするべきです。<br>
         <br>
         :param request: リクエストパラメータ
@@ -709,9 +774,9 @@ class Gs2MoneyClient(AbstractGs2Client):
 
     def consume_wallet(self, request):
         """
-        ウォレットから仮想通貨を消費します<br>
+        ウォレットから課金通貨を消費します<br>
         <br>
-        paidOnly に true を指定することで、有償仮想通貨のみ消費対象とすることが出来ます。<br>
+        paidOnly に true を指定することで、有償課金通貨のみ消費対象とすることが出来ます。<br>
         プレミアムなサービスの提供時などに活用してください。<br>
         <br>
         :param request: リクエストパラメータ
@@ -742,12 +807,43 @@ class Gs2MoneyClient(AbstractGs2Client):
             headers=headers
         ))
 
+    def consume_wallet_by_stamp_task(self, request):
+        """
+        スタンプタスクを使用してウォレットから課金通貨を消費します<br>
+        <br>
+        :param request: リクエストパラメータ
+        :type request: gs2_money_client.control.ConsumeWalletByStampTaskRequest.ConsumeWalletByStampTaskRequest
+        :return: 結果
+        :rtype: gs2_money_client.control.ConsumeWalletByStampTaskResult.ConsumeWalletByStampTaskResult
+        """
+        body = { 
+            "task": request.get_task(),
+            "keyName": request.get_key_name(),
+            "transactionId": request.get_transaction_id(),
+        }
+
+        headers = { 
+            "X-GS2-ACCESS-TOKEN": request.get_access_token()
+        }
+        if request.get_request_id() is not None:
+            headers["X-GS2-REQUEST-ID"] = request.get_request_id()
+        from gs2_money_client.control.ConsumeWalletByStampTaskRequest import ConsumeWalletByStampTaskRequest
+        from gs2_money_client.control.ConsumeWalletByStampTaskResult import ConsumeWalletByStampTaskResult
+        return ConsumeWalletByStampTaskResult(self._do_post_request(
+            url=Gs2Constant.ENDPOINT_HOST + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/stampTask/consume",
+            service=self.ENDPOINT,
+            component=ConsumeWalletByStampTaskRequest.Constant.MODULE,
+            target_function=ConsumeWalletByStampTaskRequest.Constant.FUNCTION,
+            body=body,
+            headers=headers
+        ))
+
     def consume_wallet_by_user_id(self, request):
         """
-        ウォレットの仮想通貨を消費します<br>
+        ウォレットの課金通貨を消費します<br>
         <br>
         trasactionId にトランザクションIDを指定することで、<br>
-        1回の課金処理で複数回仮想通貨を消費することを防ぐことが出来ます。<br>
+        1回の課金処理で複数回課金通貨を消費することを防ぐことが出来ます。<br>
         重複したリクエストが発生した場合は 409エラー(ConflictException) が発生しますが、正常処理とするべきです。<br>
         <br>
         :param request: リクエストパラメータ
@@ -810,8 +906,8 @@ class Gs2MoneyClient(AbstractGs2Client):
         """
         ウォレットを取得します<br>
         <br>
-        ここでは有償仮想通貨と無償仮想通貨の数が取得できます。<br>
-        有償仮想通貨は単価ごとに所持数量が別途管理されています。<br>
+        ここでは有償課金通貨と無償課金通貨の数が取得できます。<br>
+        有償課金通貨は単価ごとに所持数量が別途管理されています。<br>
         詳細な構成を取得したい場合は Gs2Money:GetWalletDetail を使ってください。<br>
         <br>:param request: リクエストパラメータ
         :type request: gs2_money_client.control.GetWalletRequest.GetWalletRequest

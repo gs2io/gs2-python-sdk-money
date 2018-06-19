@@ -89,16 +89,16 @@ class CreateMoneyRequest(Gs2BasicRequest):
 
     def get_name(self):
         """
-        仮想通貨名を取得
-        :return: 仮想通貨名
+        課金通貨名を取得
+        :return: 課金通貨名
         :rtype: unicode
         """
         return self.__name
 
     def set_name(self, name):
         """
-        仮想通貨名を設定
-        :param name: 仮想通貨名
+        課金通貨名を設定
+        :param name: 課金通貨名
         :type name: unicode
         """
         if name and not (isinstance(name, str) or isinstance(name, unicode)):
@@ -107,8 +107,8 @@ class CreateMoneyRequest(Gs2BasicRequest):
 
     def with_name(self, name):
         """
-        仮想通貨名を設定
-        :param name: 仮想通貨名
+        課金通貨名を設定
+        :param name: 課金通貨名
         :type name: unicode
         :return: this
         :rtype: CreateMoneyRequest
@@ -176,16 +176,16 @@ class CreateMoneyRequest(Gs2BasicRequest):
 
     def get_share_free(self):
         """
-        無償仮想通貨を異なるスロットで共有するかを取得
-        :return: 無償仮想通貨を異なるスロットで共有するか
+        無償課金通貨を異なるスロットで共有するかを取得
+        :return: 無償課金通貨を異なるスロットで共有するか
         :rtype: bool
         """
         return self.__share_free
 
     def set_share_free(self, share_free):
         """
-        無償仮想通貨を異なるスロットで共有するかを設定
-        :param share_free: 無償仮想通貨を異なるスロットで共有するか
+        無償課金通貨を異なるスロットで共有するかを設定
+        :param share_free: 無償課金通貨を異なるスロットで共有するか
         :type share_free: bool
         """
         if share_free and not isinstance(share_free, bool):
@@ -194,8 +194,8 @@ class CreateMoneyRequest(Gs2BasicRequest):
 
     def with_share_free(self, share_free):
         """
-        無償仮想通貨を異なるスロットで共有するかを設定
-        :param share_free: 無償仮想通貨を異なるスロットで共有するか
+        無償課金通貨を異なるスロットで共有するかを設定
+        :param share_free: 無償課金通貨を異なるスロットで共有するか
         :type share_free: bool
         :return: this
         :rtype: CreateMoneyRequest

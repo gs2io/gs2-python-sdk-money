@@ -61,16 +61,16 @@ class Money(object):
 
     def get_money_id(self):
         """
-        仮想通貨GRNを取得
-        :return: 仮想通貨GRN
+        課金通貨GRNを取得
+        :return: 課金通貨GRN
         :rtype: unicode
         """
         return self.__money_id
 
     def set_money_id(self, money_id):
         """
-        仮想通貨GRNを設定
-        :param money_id: 仮想通貨GRN
+        課金通貨GRNを設定
+        :param money_id: 課金通貨GRN
         :type money_id: unicode
         """
         self.__money_id = money_id
@@ -93,16 +93,16 @@ class Money(object):
 
     def get_name(self):
         """
-        仮想通貨名を取得
-        :return: 仮想通貨名
+        課金通貨名を取得
+        :return: 課金通貨名
         :rtype: unicode
         """
         return self.__name
 
     def set_name(self, name):
         """
-        仮想通貨名を設定
-        :param name: 仮想通貨名
+        課金通貨名を設定
+        :param name: 課金通貨名
         :type name: unicode
         """
         self.__name = name
@@ -141,16 +141,16 @@ class Money(object):
 
     def get_share_free(self):
         """
-        無償仮想通貨を異なるスロットで共有するかを取得
-        :return: 無償仮想通貨を異なるスロットで共有するか
+        無償課金通貨を異なるスロットで共有するかを取得
+        :return: 無償課金通貨を異なるスロットで共有するか
         :rtype: bool
         """
         return self.__share_free
 
     def set_share_free(self, share_free):
         """
-        無償仮想通貨を異なるスロットで共有するかを設定
-        :param share_free: 無償仮想通貨を異なるスロットで共有するか
+        無償課金通貨を異なるスロットで共有するかを設定
+        :param share_free: 無償課金通貨を異なるスロットで共有するか
         :type share_free: bool
         """
         self.__share_free = share_free
@@ -362,6 +362,12 @@ class Money(object):
         :type update_at: int
         """
         self.__update_at = update_at
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(Money, self).__getitem__(key)
 
     def to_dict(self):
         return {

@@ -67,32 +67,32 @@ class Summary(object):
 
     def get_paid(self):
         """
-        有償仮想通貨所持量を取得
-        :return: 有償仮想通貨所持量
+        有償課金通貨所持量を取得
+        :return: 有償課金通貨所持量
         :rtype: int
         """
         return self.__paid
 
     def set_paid(self, paid):
         """
-        有償仮想通貨所持量を設定
-        :param paid: 有償仮想通貨所持量
+        有償課金通貨所持量を設定
+        :param paid: 有償課金通貨所持量
         :type paid: int
         """
         self.__paid = paid
 
     def get_free(self):
         """
-        無償仮想通貨所持量を取得
-        :return: 無償仮想通貨所持量
+        無償課金通貨所持量を取得
+        :return: 無償課金通貨所持量
         :rtype: int
         """
         return self.__free
 
     def set_free(self, free):
         """
-        無償仮想通貨所持量を設定
-        :param free: 無償仮想通貨所持量
+        無償課金通貨所持量を設定
+        :param free: 無償課金通貨所持量
         :type free: int
         """
         self.__free = free
@@ -128,6 +128,12 @@ class Summary(object):
         :type update_at: int
         """
         self.__update_at = update_at
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(Summary, self).__getitem__(key)
 
     def to_dict(self):
         return {

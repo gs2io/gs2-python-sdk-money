@@ -89,32 +89,32 @@ class Receipt(object):
 
     def get_paid(self):
         """
-        有償仮想通貨を取得
-        :return: 有償仮想通貨
+        有償課金通貨を取得
+        :return: 有償課金通貨
         :rtype: int
         """
         return self.__paid
 
     def set_paid(self, paid):
         """
-        有償仮想通貨を設定
-        :param paid: 有償仮想通貨
+        有償課金通貨を設定
+        :param paid: 有償課金通貨
         :type paid: int
         """
         self.__paid = paid
 
     def get_free(self):
         """
-        無償仮想通貨を取得
-        :return: 無償仮想通貨
+        無償課金通貨を取得
+        :return: 無償課金通貨
         :rtype: int
         """
         return self.__free
 
     def set_free(self, free):
         """
-        無償仮想通貨を設定
-        :param free: 無償仮想通貨
+        無償課金通貨を設定
+        :param free: 無償課金通貨
         :type free: int
         """
         self.__free = free
@@ -182,6 +182,12 @@ class Receipt(object):
         :type _type: unicode
         """
         self.__type = _type
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(Receipt, self).__getitem__(key)
 
     def to_dict(self):
         return {

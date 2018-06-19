@@ -57,6 +57,12 @@ class Wallet(object):
         """
         self.__count = count
 
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(Wallet, self).__getitem__(key)
+
     def to_dict(self):
         return {
             "price": self.__price,

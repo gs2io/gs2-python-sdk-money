@@ -51,16 +51,16 @@ class Item(object):
 
     def get_money_id(self):
         """
-        仮想通貨GRNを取得
-        :return: 仮想通貨GRN
+        課金通貨GRNを取得
+        :return: 課金通貨GRN
         :rtype: unicode
         """
         return self.__money_id
 
     def set_money_id(self, money_id):
         """
-        仮想通貨GRNを設定
-        :param money_id: 仮想通貨GRN
+        課金通貨GRNを設定
+        :param money_id: 課金通貨GRN
         :type money_id: unicode
         """
         self.__money_id = money_id
@@ -83,16 +83,16 @@ class Item(object):
 
     def get_count(self):
         """
-        付与する仮想通貨の数を取得
-        :return: 付与する仮想通貨の数
+        付与する課金通貨の数を取得
+        :return: 付与する課金通貨の数
         :rtype: int
         """
         return self.__count
 
     def set_count(self, count):
         """
-        付与する仮想通貨の数を設定
-        :param count: 付与する仮想通貨の数
+        付与する課金通貨の数を設定
+        :param count: 付与する課金通貨の数
         :type count: int
         """
         self.__count = count
@@ -128,6 +128,12 @@ class Item(object):
         :type update_at: int
         """
         self.__update_at = update_at
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(Item, self).__getitem__(key)
 
     def to_dict(self):
         return {

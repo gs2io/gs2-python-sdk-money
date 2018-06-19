@@ -45,16 +45,16 @@ class CreateItemRequest(Gs2BasicRequest):
 
     def get_money_name(self):
         """
-        仮想通貨の名前を取得
-        :return: 仮想通貨の名前
+        課金通貨の名前を取得
+        :return: 課金通貨の名前
         :rtype: unicode
         """
         return self.__money_name
 
     def set_money_name(self, money_name):
         """
-        仮想通貨の名前を設定
-        :param money_name: 仮想通貨の名前
+        課金通貨の名前を設定
+        :param money_name: 課金通貨の名前
         :type money_name: unicode
         """
         if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
@@ -63,8 +63,8 @@ class CreateItemRequest(Gs2BasicRequest):
 
     def with_money_name(self, money_name):
         """
-        仮想通貨の名前を設定
-        :param money_name: 仮想通貨の名前
+        課金通貨の名前を設定
+        :param money_name: 課金通貨の名前
         :type money_name: unicode
         :return: this
         :rtype: CreateItemRequest
@@ -103,16 +103,16 @@ class CreateItemRequest(Gs2BasicRequest):
 
     def get_count(self):
         """
-        付与する仮想通貨の数を取得
-        :return: 付与する仮想通貨の数
+        付与する課金通貨の数を取得
+        :return: 付与する課金通貨の数
         :rtype: int
         """
         return self.__count
 
     def set_count(self, count):
         """
-        付与する仮想通貨の数を設定
-        :param count: 付与する仮想通貨の数
+        付与する課金通貨の数を設定
+        :param count: 付与する課金通貨の数
         :type count: int
         """
         if count and not isinstance(count, int):
@@ -121,8 +121,8 @@ class CreateItemRequest(Gs2BasicRequest):
 
     def with_count(self, count):
         """
-        付与する仮想通貨の数を設定
-        :param count: 付与する仮想通貨の数
+        付与する課金通貨の数を設定
+        :param count: 付与する課金通貨の数
         :type count: int
         :return: this
         :rtype: CreateItemRequest

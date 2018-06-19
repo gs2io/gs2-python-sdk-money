@@ -49,16 +49,16 @@ class DescribeWalletRequest(Gs2BasicRequest):
 
     def get_money_name(self):
         """
-        仮想通貨の名前を取得
-        :return: 仮想通貨の名前
+        課金通貨の名前を取得
+        :return: 課金通貨の名前
         :rtype: unicode
         """
         return self.__money_name
 
     def set_money_name(self, money_name):
         """
-        仮想通貨の名前を設定
-        :param money_name: 仮想通貨の名前
+        課金通貨の名前を設定
+        :param money_name: 課金通貨の名前
         :type money_name: unicode
         """
         if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
@@ -67,8 +67,8 @@ class DescribeWalletRequest(Gs2BasicRequest):
 
     def with_money_name(self, money_name):
         """
-        仮想通貨の名前を設定
-        :param money_name: 仮想通貨の名前
+        課金通貨の名前を設定
+        :param money_name: 課金通貨の名前
         :type money_name: unicode
         :return: this
         :rtype: DescribeWalletRequest

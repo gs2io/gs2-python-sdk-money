@@ -45,16 +45,16 @@ class ChargeWalletRequest(Gs2UserRequest):
 
     def get_money_name(self):
         """
-        取得する仮想通貨の名前を取得
-        :return: 取得する仮想通貨の名前
+        取得する課金通貨の名前を取得
+        :return: 取得する課金通貨の名前
         :rtype: unicode
         """
         return self.__money_name
 
     def set_money_name(self, money_name):
         """
-        取得する仮想通貨の名前を設定
-        :param money_name: 取得する仮想通貨の名前
+        取得する課金通貨の名前を設定
+        :param money_name: 取得する課金通貨の名前
         :type money_name: unicode
         """
         if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
@@ -63,8 +63,8 @@ class ChargeWalletRequest(Gs2UserRequest):
 
     def with_money_name(self, money_name):
         """
-        取得する仮想通貨の名前を設定
-        :param money_name: 取得する仮想通貨の名前
+        取得する課金通貨の名前を設定
+        :param money_name: 取得する課金通貨の名前
         :type money_name: unicode
         :return: this
         :rtype: ChargeWalletRequest
@@ -132,16 +132,16 @@ class ChargeWalletRequest(Gs2UserRequest):
 
     def get_count(self):
         """
-        仮想通貨付与量を取得
-        :return: 仮想通貨付与量
+        課金通貨付与量を取得
+        :return: 課金通貨付与量
         :rtype: int
         """
         return self.__count
 
     def set_count(self, count):
         """
-        仮想通貨付与量を設定
-        :param count: 仮想通貨付与量
+        課金通貨付与量を設定
+        :param count: 課金通貨付与量
         :type count: int
         """
         if count and not isinstance(count, int):
@@ -150,8 +150,8 @@ class ChargeWalletRequest(Gs2UserRequest):
 
     def with_count(self, count):
         """
-        仮想通貨付与量を設定
-        :param count: 仮想通貨付与量
+        課金通貨付与量を設定
+        :param count: 課金通貨付与量
         :type count: int
         :return: this
         :rtype: ChargeWalletRequest

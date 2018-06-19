@@ -55,16 +55,16 @@ class PlatformedItem(object):
 
     def get_money_id(self):
         """
-        仮想通貨GRNを取得
-        :return: 仮想通貨GRN
+        課金通貨GRNを取得
+        :return: 課金通貨GRN
         :rtype: unicode
         """
         return self.__money_id
 
     def set_money_id(self, money_id):
         """
-        仮想通貨GRNを設定
-        :param money_id: 仮想通貨GRN
+        課金通貨GRNを設定
+        :param money_id: 課金通貨GRN
         :type money_id: unicode
         """
         self.__money_id = money_id
@@ -164,6 +164,12 @@ class PlatformedItem(object):
         :type update_at: int
         """
         self.__update_at = update_at
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(PlatformedItem, self).__getitem__(key)
 
     def to_dict(self):
         return {
