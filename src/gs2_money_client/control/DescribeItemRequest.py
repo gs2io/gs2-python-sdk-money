@@ -57,7 +57,7 @@ class DescribeItemRequest(Gs2BasicRequest):
         :param money_name: 課金通貨の名前
         :type money_name: unicode
         """
-        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
+        if money_name is not None and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -86,7 +86,7 @@ class DescribeItemRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
-        if page_token and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
+        if page_token is not None and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
             raise TypeError(type(page_token))
         self.__page_token = page_token
 
@@ -115,7 +115,7 @@ class DescribeItemRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         """
-        if limit and not isinstance(limit, int):
+        if limit is not None and not isinstance(limit, int):
             raise TypeError(type(limit))
         self.__limit = limit
 

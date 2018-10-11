@@ -53,7 +53,7 @@ class ChargeWalletByStampSheetRequest(Gs2UserRequest):
         :param slot: 取得するウォレットのスロット番号
         :type slot: int
         """
-        if slot and not isinstance(slot, int):
+        if slot is not None and not isinstance(slot, int):
             raise TypeError(type(slot))
         self.__slot = slot
 
@@ -82,7 +82,7 @@ class ChargeWalletByStampSheetRequest(Gs2UserRequest):
         :param sheet: スタンプシート
         :type sheet: unicode
         """
-        if sheet and not (isinstance(sheet, str) or isinstance(sheet, unicode)):
+        if sheet is not None and not (isinstance(sheet, str) or isinstance(sheet, unicode)):
             raise TypeError(type(sheet))
         self.__sheet = sheet
 
@@ -111,7 +111,7 @@ class ChargeWalletByStampSheetRequest(Gs2UserRequest):
         :param key_name: スタンプの暗号鍵
         :type key_name: unicode
         """
-        if key_name and not (isinstance(key_name, str) or isinstance(key_name, unicode)):
+        if key_name is not None and not (isinstance(key_name, str) or isinstance(key_name, unicode)):
             raise TypeError(type(key_name))
         self.__key_name = key_name
 

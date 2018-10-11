@@ -69,7 +69,7 @@ class ChargeWalletByUserIdRequest(Gs2BasicRequest):
         :param money_name: 課金通貨の名前
         :type money_name: unicode
         """
-        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
+        if money_name is not None and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -98,7 +98,7 @@ class ChargeWalletByUserIdRequest(Gs2BasicRequest):
         :param slot: ウォレットのスロット番号
         :type slot: int
         """
-        if slot and not isinstance(slot, int):
+        if slot is not None and not isinstance(slot, int):
             raise TypeError(type(slot))
         self.__slot = slot
 
@@ -127,7 +127,7 @@ class ChargeWalletByUserIdRequest(Gs2BasicRequest):
         :param user_id: ウォレットのユーザID
         :type user_id: unicode
         """
-        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
+        if user_id is not None and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -156,7 +156,7 @@ class ChargeWalletByUserIdRequest(Gs2BasicRequest):
         :param price: 支払金額
         :type price: float
         """
-        if price and not isinstance(price, float):
+        if price is not None and not isinstance(price, float):
             raise TypeError(type(price))
         self.__price = price
 
@@ -185,7 +185,7 @@ class ChargeWalletByUserIdRequest(Gs2BasicRequest):
         :param count: 課金通貨付与量
         :type count: int
         """
-        if count and not isinstance(count, int):
+        if count is not None and not isinstance(count, int):
             raise TypeError(type(count))
         self.__count = count
 
@@ -214,7 +214,7 @@ class ChargeWalletByUserIdRequest(Gs2BasicRequest):
         :param transaction_id: トランザクションID
         :type transaction_id: unicode
         """
-        if transaction_id and not (isinstance(transaction_id, str) or isinstance(transaction_id, unicode)):
+        if transaction_id is not None and not (isinstance(transaction_id, str) or isinstance(transaction_id, unicode)):
             raise TypeError(type(transaction_id))
         self.__transaction_id = transaction_id
 

@@ -57,14 +57,13 @@ class Gs2MoneyClient(AbstractGs2Client):
             "count": request.get_count(),
         }
 
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.CreateItemRequest import CreateItemRequest
         from gs2_money_client.control.CreateItemResult import CreateItemResult
         return CreateItemResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item",
             service=self.ENDPOINT,
             component=CreateItemRequest.Constant.MODULE,
             target_function=CreateItemRequest.Constant.FUNCTION,
@@ -80,13 +79,12 @@ class Gs2MoneyClient(AbstractGs2Client):
         :type request: gs2_money_client.control.DeleteItemRequest.DeleteItemRequest
         """
         query_strings = {}
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.DeleteItemRequest import DeleteItemRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else url_encoder.encode(request.get_item_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else request.get_item_name())) + "",
             service=self.ENDPOINT,
             component=DeleteItemRequest.Constant.MODULE,
             target_function=DeleteItemRequest.Constant.FUNCTION,
@@ -102,19 +100,19 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.DescribeItemResult.DescribeItemResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.DescribeItemRequest import DescribeItemRequest
 
         from gs2_money_client.control.DescribeItemResult import DescribeItemResult
         return DescribeItemResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item",
             service=self.ENDPOINT,
             component=DescribeItemRequest.Constant.MODULE,
             target_function=DescribeItemRequest.Constant.FUNCTION,
@@ -130,17 +128,15 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.GetItemResult.GetItemResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.GetItemRequest import GetItemRequest
 
         from gs2_money_client.control.GetItemResult import GetItemResult
         return GetItemResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else url_encoder.encode(request.get_item_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else request.get_item_name())) + "",
             service=self.ENDPOINT,
             component=GetItemRequest.Constant.MODULE,
             target_function=GetItemRequest.Constant.FUNCTION,
@@ -160,14 +156,13 @@ class Gs2MoneyClient(AbstractGs2Client):
         body = { 
             "count": request.get_count(),
         }
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.UpdateItemRequest import UpdateItemRequest
         from gs2_money_client.control.UpdateItemResult import UpdateItemResult
         return UpdateItemResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else url_encoder.encode(request.get_item_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else request.get_item_name())) + "",
             service=self.ENDPOINT,
             component=UpdateItemRequest.Constant.MODULE,
             target_function=UpdateItemRequest.Constant.FUNCTION,
@@ -237,8 +232,7 @@ class Gs2MoneyClient(AbstractGs2Client):
             body["consumeWalletTriggerScript"] = request.get_consume_wallet_trigger_script()
         if request.get_consume_wallet_done_trigger_script() is not None:
             body["consumeWalletDoneTriggerScript"] = request.get_consume_wallet_done_trigger_script()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.CreateMoneyRequest import CreateMoneyRequest
@@ -260,13 +254,12 @@ class Gs2MoneyClient(AbstractGs2Client):
         :type request: gs2_money_client.control.DeleteMoneyRequest.DeleteMoneyRequest
         """
         query_strings = {}
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.DeleteMoneyRequest import DeleteMoneyRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "",
             service=self.ENDPOINT,
             component=DeleteMoneyRequest.Constant.MODULE,
             target_function=DeleteMoneyRequest.Constant.FUNCTION,
@@ -282,12 +275,12 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.DescribeMoneyResult.DescribeMoneyResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.DescribeMoneyRequest import DescribeMoneyRequest
@@ -310,17 +303,15 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.GetMoneyResult.GetMoneyResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.GetMoneyRequest import GetMoneyRequest
 
         from gs2_money_client.control.GetMoneyResult import GetMoneyResult
         return GetMoneyResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "",
             service=self.ENDPOINT,
             component=GetMoneyRequest.Constant.MODULE,
             target_function=GetMoneyRequest.Constant.FUNCTION,
@@ -336,17 +327,15 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.GetMoneyStatusResult.GetMoneyStatusResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.GetMoneyStatusRequest import GetMoneyStatusRequest
 
         from gs2_money_client.control.GetMoneyStatusResult import GetMoneyStatusResult
         return GetMoneyStatusResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/status",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/status",
             service=self.ENDPOINT,
             component=GetMoneyStatusRequest.Constant.MODULE,
             target_function=GetMoneyStatusRequest.Constant.FUNCTION,
@@ -385,14 +374,13 @@ class Gs2MoneyClient(AbstractGs2Client):
             body["consumeWalletTriggerScript"] = request.get_consume_wallet_trigger_script()
         if request.get_consume_wallet_done_trigger_script() is not None:
             body["consumeWalletDoneTriggerScript"] = request.get_consume_wallet_done_trigger_script()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.UpdateMoneyRequest import UpdateMoneyRequest
         from gs2_money_client.control.UpdateMoneyResult import UpdateMoneyResult
         return UpdateMoneyResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "",
             service=self.ENDPOINT,
             component=UpdateMoneyRequest.Constant.MODULE,
             target_function=UpdateMoneyRequest.Constant.FUNCTION,
@@ -417,14 +405,13 @@ class Gs2MoneyClient(AbstractGs2Client):
             "price": request.get_price(),
         }
 
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.CreatePlatformedItemRequest import CreatePlatformedItemRequest
         from gs2_money_client.control.CreatePlatformedItemResult import CreatePlatformedItemResult
         return CreatePlatformedItemResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else url_encoder.encode(request.get_item_name()))) + "/platformedItem",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else request.get_item_name())) + "/platformedItem",
             service=self.ENDPOINT,
             component=CreatePlatformedItemRequest.Constant.MODULE,
             target_function=CreatePlatformedItemRequest.Constant.FUNCTION,
@@ -440,13 +427,12 @@ class Gs2MoneyClient(AbstractGs2Client):
         :type request: gs2_money_client.control.DeletePlatformedItemRequest.DeletePlatformedItemRequest
         """
         query_strings = {}
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.DeletePlatformedItemRequest import DeletePlatformedItemRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else url_encoder.encode(request.get_item_name()))) + "/platformedItem/" + str(("null" if request.get_platform() is None or request.get_platform() == "" else url_encoder.encode(request.get_platform()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else request.get_item_name())) + "/platformedItem/" + str(("null" if request.get_platform() is None or request.get_platform() == "" else request.get_platform())) + "",
             service=self.ENDPOINT,
             component=DeletePlatformedItemRequest.Constant.MODULE,
             target_function=DeletePlatformedItemRequest.Constant.FUNCTION,
@@ -462,19 +448,19 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.DescribePlatformedItemResult.DescribePlatformedItemResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.DescribePlatformedItemRequest import DescribePlatformedItemRequest
 
         from gs2_money_client.control.DescribePlatformedItemResult import DescribePlatformedItemResult
         return DescribePlatformedItemResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else url_encoder.encode(request.get_item_name()))) + "/platformedItem",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else request.get_item_name())) + "/platformedItem",
             service=self.ENDPOINT,
             component=DescribePlatformedItemRequest.Constant.MODULE,
             target_function=DescribePlatformedItemRequest.Constant.FUNCTION,
@@ -490,17 +476,15 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.GetPlatformedItemResult.GetPlatformedItemResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.GetPlatformedItemRequest import GetPlatformedItemRequest
 
         from gs2_money_client.control.GetPlatformedItemResult import GetPlatformedItemResult
         return GetPlatformedItemResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else url_encoder.encode(request.get_item_name()))) + "/platformedItem/" + str(("null" if request.get_platform() is None or request.get_platform() == "" else url_encoder.encode(request.get_platform()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else request.get_item_name())) + "/platformedItem/" + str(("null" if request.get_platform() is None or request.get_platform() == "" else request.get_platform())) + "",
             service=self.ENDPOINT,
             component=GetPlatformedItemRequest.Constant.MODULE,
             target_function=GetPlatformedItemRequest.Constant.FUNCTION,
@@ -521,14 +505,13 @@ class Gs2MoneyClient(AbstractGs2Client):
             "name": request.get_name(),
             "price": request.get_price(),
         }
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.UpdatePlatformedItemRequest import UpdatePlatformedItemRequest
         from gs2_money_client.control.UpdatePlatformedItemResult import UpdatePlatformedItemResult
         return UpdatePlatformedItemResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else url_encoder.encode(request.get_item_name()))) + "/platformedItem/" + str(("null" if request.get_platform() is None or request.get_platform() == "" else url_encoder.encode(request.get_platform()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/item/" + str(("null" if request.get_item_name() is None or request.get_item_name() == "" else request.get_item_name())) + "/platformedItem/" + str(("null" if request.get_platform() is None or request.get_platform() == "" else request.get_platform())) + "",
             service=self.ENDPOINT,
             component=UpdatePlatformedItemRequest.Constant.MODULE,
             target_function=UpdatePlatformedItemRequest.Constant.FUNCTION,
@@ -544,21 +527,23 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.DescribeReceiptResult.DescribeReceiptResult
         """
-        query_strings = {
-            'begin': request.get_begin(),
-            'end': request.get_end(),
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_begin() is not None:
+            query_strings['begin'] = request.get_begin()
+        if request.get_end() is not None:
+            query_strings['end'] = request.get_end()
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.DescribeReceiptRequest import DescribeReceiptRequest
 
         from gs2_money_client.control.DescribeReceiptResult import DescribeReceiptResult
         return DescribeReceiptResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/receipt",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/receipt",
             service=self.ENDPOINT,
             component=DescribeReceiptRequest.Constant.MODULE,
             target_function=DescribeReceiptRequest.Constant.FUNCTION,
@@ -574,21 +559,23 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.DescribeReceiptByUserIdAndSlotResult.DescribeReceiptByUserIdAndSlotResult
         """
-        query_strings = {
-            'begin': request.get_begin(),
-            'end': request.get_end(),
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_begin() is not None:
+            query_strings['begin'] = request.get_begin()
+        if request.get_end() is not None:
+            query_strings['end'] = request.get_end()
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.DescribeReceiptByUserIdAndSlotRequest import DescribeReceiptByUserIdAndSlotRequest
 
         from gs2_money_client.control.DescribeReceiptByUserIdAndSlotResult import DescribeReceiptByUserIdAndSlotResult
         return DescribeReceiptByUserIdAndSlotResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/receipt/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/receipt/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "",
             service=self.ENDPOINT,
             component=DescribeReceiptByUserIdAndSlotRequest.Constant.MODULE,
             target_function=DescribeReceiptByUserIdAndSlotRequest.Constant.FUNCTION,
@@ -622,15 +609,15 @@ class Gs2MoneyClient(AbstractGs2Client):
             "receipt": request.get_receipt(),
         }
 
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.VerifyRequest import VerifyRequest
         from gs2_money_client.control.VerifyResult import VerifyResult
         return VerifyResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/verify",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/verify",
             service=self.ENDPOINT,
             component=VerifyRequest.Constant.MODULE,
             target_function=VerifyRequest.Constant.FUNCTION,
@@ -644,8 +631,6 @@ class Gs2MoneyClient(AbstractGs2Client):
         <br>
         :param request: リクエストパラメータ
         :type request: gs2_money_client.control.VerifyByStampTaskRequest.VerifyByStampTaskRequest
-        :return: 結果
-        :rtype: gs2_money_client.control.VerifyByStampTaskResult.VerifyByStampTaskResult
         """
         body = { 
             "task": request.get_task(),
@@ -655,21 +640,20 @@ class Gs2MoneyClient(AbstractGs2Client):
             "slot": request.get_slot(),
         }
 
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.VerifyByStampTaskRequest import VerifyByStampTaskRequest
-        from gs2_money_client.control.VerifyByStampTaskResult import VerifyByStampTaskResult
-        return VerifyByStampTaskResult(self._do_post_request(
+        self._do_post_request(
             url=Gs2Constant.ENDPOINT_HOST + "/verify/stampTask",
             service=self.ENDPOINT,
             component=VerifyByStampTaskRequest.Constant.MODULE,
             target_function=VerifyByStampTaskRequest.Constant.FUNCTION,
             body=body,
             headers=headers
-        ))
+        )
 
     def charge_wallet(self, request):
         """
@@ -691,15 +675,15 @@ class Gs2MoneyClient(AbstractGs2Client):
 
         if request.get_transaction_id() is not None:
             body["transactionId"] = request.get_transaction_id()
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.ChargeWalletRequest import ChargeWalletRequest
         from gs2_money_client.control.ChargeWalletResult import ChargeWalletResult
         return ChargeWalletResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/charge",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "/charge",
             service=self.ENDPOINT,
             component=ChargeWalletRequest.Constant.MODULE,
             target_function=ChargeWalletRequest.Constant.FUNCTION,
@@ -721,15 +705,15 @@ class Gs2MoneyClient(AbstractGs2Client):
             "keyName": request.get_key_name(),
         }
 
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.ChargeWalletByStampSheetRequest import ChargeWalletByStampSheetRequest
         from gs2_money_client.control.ChargeWalletByStampSheetResult import ChargeWalletByStampSheetResult
         return ChargeWalletByStampSheetResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/stampSheet/charge",
+            url=Gs2Constant.ENDPOINT_HOST + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "/stampSheet/charge",
             service=self.ENDPOINT,
             component=ChargeWalletByStampSheetRequest.Constant.MODULE,
             target_function=ChargeWalletByStampSheetRequest.Constant.FUNCTION,
@@ -757,14 +741,13 @@ class Gs2MoneyClient(AbstractGs2Client):
 
         if request.get_transaction_id() is not None:
             body["transactionId"] = request.get_transaction_id()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.ChargeWalletByUserIdRequest import ChargeWalletByUserIdRequest
         from gs2_money_client.control.ChargeWalletByUserIdResult import ChargeWalletByUserIdResult
         return ChargeWalletByUserIdResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/charge",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/charge",
             service=self.ENDPOINT,
             component=ChargeWalletByUserIdRequest.Constant.MODULE,
             target_function=ChargeWalletByUserIdRequest.Constant.FUNCTION,
@@ -791,15 +774,15 @@ class Gs2MoneyClient(AbstractGs2Client):
 
         if request.get_paid_only() is not None:
             body["paidOnly"] = request.get_paid_only()
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.ConsumeWalletRequest import ConsumeWalletRequest
         from gs2_money_client.control.ConsumeWalletResult import ConsumeWalletResult
         return ConsumeWalletResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/consume",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "/consume",
             service=self.ENDPOINT,
             component=ConsumeWalletRequest.Constant.MODULE,
             target_function=ConsumeWalletRequest.Constant.FUNCTION,
@@ -822,15 +805,15 @@ class Gs2MoneyClient(AbstractGs2Client):
             "transactionId": request.get_transaction_id(),
         }
 
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.ConsumeWalletByStampTaskRequest import ConsumeWalletByStampTaskRequest
         from gs2_money_client.control.ConsumeWalletByStampTaskResult import ConsumeWalletByStampTaskResult
         return ConsumeWalletByStampTaskResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/stampTask/consume",
+            url=Gs2Constant.ENDPOINT_HOST + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "/stampTask/consume",
             service=self.ENDPOINT,
             component=ConsumeWalletByStampTaskRequest.Constant.MODULE,
             target_function=ConsumeWalletByStampTaskRequest.Constant.FUNCTION,
@@ -858,14 +841,13 @@ class Gs2MoneyClient(AbstractGs2Client):
 
         if request.get_paid_only() is not None:
             body["paidOnly"] = request.get_paid_only()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.ConsumeWalletByUserIdRequest import ConsumeWalletByUserIdRequest
         from gs2_money_client.control.ConsumeWalletByUserIdResult import ConsumeWalletByUserIdResult
         return ConsumeWalletByUserIdResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/consume",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/consume",
             service=self.ENDPOINT,
             component=ConsumeWalletByUserIdRequest.Constant.MODULE,
             target_function=ConsumeWalletByUserIdRequest.Constant.FUNCTION,
@@ -881,20 +863,21 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.DescribeWalletResult.DescribeWalletResult
         """
-        query_strings = {
-            'userId': request.get_user_id(),
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_user_id() is not None:
+            query_strings['userId'] = request.get_user_id()
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.DescribeWalletRequest import DescribeWalletRequest
 
         from gs2_money_client.control.DescribeWalletResult import DescribeWalletResult
         return DescribeWalletResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/wallet",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/wallet",
             service=self.ENDPOINT,
             component=DescribeWalletRequest.Constant.MODULE,
             target_function=DescribeWalletRequest.Constant.FUNCTION,
@@ -914,18 +897,17 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.GetWalletResult.GetWalletResult
         """
-        query_strings = {
-        }
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        query_strings = {}
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.GetWalletRequest import GetWalletRequest
 
         from gs2_money_client.control.GetWalletResult import GetWalletResult
         return GetWalletResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "",
             service=self.ENDPOINT,
             component=GetWalletRequest.Constant.MODULE,
             target_function=GetWalletRequest.Constant.FUNCTION,
@@ -941,17 +923,15 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.GetWalletByUserIdResult.GetWalletByUserIdResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.GetWalletByUserIdRequest import GetWalletByUserIdRequest
 
         from gs2_money_client.control.GetWalletByUserIdResult import GetWalletByUserIdResult
         return GetWalletByUserIdResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "",
             service=self.ENDPOINT,
             component=GetWalletByUserIdRequest.Constant.MODULE,
             target_function=GetWalletByUserIdRequest.Constant.FUNCTION,
@@ -967,17 +947,15 @@ class Gs2MoneyClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_money_client.control.GetWalletDetailResult.GetWalletDetailResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_money_client.control.GetWalletDetailRequest import GetWalletDetailRequest
 
         from gs2_money_client.control.GetWalletDetailResult import GetWalletDetailResult
         return GetWalletDetailResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else url_encoder.encode(request.get_money_name()))) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else url_encoder.encode(request.get_slot()))) + "/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/detail",
+            url=Gs2Constant.ENDPOINT_HOST + "/money/" + str(("null" if request.get_money_name() is None or request.get_money_name() == "" else request.get_money_name())) + "/wallet/" + str(("null" if request.get_slot() is None or request.get_slot() == "" else request.get_slot())) + "/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/detail",
             service=self.ENDPOINT,
             component=GetWalletDetailRequest.Constant.MODULE,
             target_function=GetWalletDetailRequest.Constant.FUNCTION,

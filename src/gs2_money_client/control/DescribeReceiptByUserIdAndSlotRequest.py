@@ -73,7 +73,7 @@ class DescribeReceiptByUserIdAndSlotRequest(Gs2BasicRequest):
         :param money_name: 課金通貨の名前
         :type money_name: unicode
         """
-        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
+        if money_name is not None and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -102,7 +102,7 @@ class DescribeReceiptByUserIdAndSlotRequest(Gs2BasicRequest):
         :param user_id: ユーザID
         :type user_id: unicode
         """
-        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
+        if user_id is not None and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -131,7 +131,7 @@ class DescribeReceiptByUserIdAndSlotRequest(Gs2BasicRequest):
         :param slot: スロット番号
         :type slot: int
         """
-        if slot and not isinstance(slot, int):
+        if slot is not None and not isinstance(slot, int):
             raise TypeError(type(slot))
         self.__slot = slot
 
@@ -160,7 +160,7 @@ class DescribeReceiptByUserIdAndSlotRequest(Gs2BasicRequest):
         :param begin: データの取得開始日時(エポック秒)
         :type begin: int
         """
-        if begin and not isinstance(begin, int):
+        if begin is not None and not isinstance(begin, int):
             raise TypeError(type(begin))
         self.__begin = begin
 
@@ -189,7 +189,7 @@ class DescribeReceiptByUserIdAndSlotRequest(Gs2BasicRequest):
         :param end: データの取得終了日時(エポック秒)
         :type end: int
         """
-        if end and not isinstance(end, int):
+        if end is not None and not isinstance(end, int):
             raise TypeError(type(end))
         self.__end = end
 
@@ -218,7 +218,7 @@ class DescribeReceiptByUserIdAndSlotRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
-        if page_token and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
+        if page_token is not None and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
             raise TypeError(type(page_token))
         self.__page_token = page_token
 
@@ -247,7 +247,7 @@ class DescribeReceiptByUserIdAndSlotRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         """
-        if limit and not isinstance(limit, int):
+        if limit is not None and not isinstance(limit, int):
             raise TypeError(type(limit))
         self.__limit = limit
 

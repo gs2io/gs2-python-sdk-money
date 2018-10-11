@@ -51,7 +51,7 @@ class GetWalletRequest(Gs2UserRequest):
         :param money_name: 課金通貨の名前
         :type money_name: unicode
         """
-        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
+        if money_name is not None and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -80,7 +80,7 @@ class GetWalletRequest(Gs2UserRequest):
         :param slot: ウォレットのスロット番号
         :type slot: int
         """
-        if slot and not isinstance(slot, int):
+        if slot is not None and not isinstance(slot, int):
             raise TypeError(type(slot))
         self.__slot = slot
 

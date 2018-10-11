@@ -55,7 +55,7 @@ class ConsumeWalletByStampTaskRequest(Gs2UserRequest):
         :param slot: 取得するウォレットのスロット番号
         :type slot: int
         """
-        if slot and not isinstance(slot, int):
+        if slot is not None and not isinstance(slot, int):
             raise TypeError(type(slot))
         self.__slot = slot
 
@@ -84,7 +84,7 @@ class ConsumeWalletByStampTaskRequest(Gs2UserRequest):
         :param task: スタンプタスク
         :type task: unicode
         """
-        if task and not (isinstance(task, str) or isinstance(task, unicode)):
+        if task is not None and not (isinstance(task, str) or isinstance(task, unicode)):
             raise TypeError(type(task))
         self.__task = task
 
@@ -113,7 +113,7 @@ class ConsumeWalletByStampTaskRequest(Gs2UserRequest):
         :param key_name: スタンプの暗号鍵
         :type key_name: unicode
         """
-        if key_name and not (isinstance(key_name, str) or isinstance(key_name, unicode)):
+        if key_name is not None and not (isinstance(key_name, str) or isinstance(key_name, unicode)):
             raise TypeError(type(key_name))
         self.__key_name = key_name
 
@@ -142,7 +142,7 @@ class ConsumeWalletByStampTaskRequest(Gs2UserRequest):
         :param transaction_id: トランザクションID
         :type transaction_id: unicode
         """
-        if transaction_id and not (isinstance(transaction_id, str) or isinstance(transaction_id, unicode)):
+        if transaction_id is not None and not (isinstance(transaction_id, str) or isinstance(transaction_id, unicode)):
             raise TypeError(type(transaction_id))
         self.__transaction_id = transaction_id
 

@@ -65,7 +65,7 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param money_name: 課金通貨の名前
         :type money_name: unicode
         """
-        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
+        if money_name is not None and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -94,7 +94,7 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param item_name: 商品の名前
         :type item_name: unicode
         """
-        if item_name and not (isinstance(item_name, str) or isinstance(item_name, unicode)):
+        if item_name is not None and not (isinstance(item_name, str) or isinstance(item_name, unicode)):
             raise TypeError(type(item_name))
         self.__item_name = item_name
 
@@ -123,7 +123,7 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param platform: 販売プラットフォーム
         :type platform: unicode
         """
-        if platform and not (isinstance(platform, str) or isinstance(platform, unicode)):
+        if platform is not None and not (isinstance(platform, str) or isinstance(platform, unicode)):
             raise TypeError(type(platform))
         self.__platform = platform
 
@@ -152,7 +152,7 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param name: アプリ内課金ID
         :type name: unicode
         """
-        if name and not (isinstance(name, str) or isinstance(name, unicode)):
+        if name is not None and not (isinstance(name, str) or isinstance(name, unicode)):
             raise TypeError(type(name))
         self.__name = name
 
@@ -181,7 +181,7 @@ class CreatePlatformedItemRequest(Gs2BasicRequest):
         :param price: 販売価格
         :type price: float
         """
-        if price and not isinstance(price, float):
+        if price is not None and not isinstance(price, float):
             raise TypeError(type(price))
         self.__price = price
 

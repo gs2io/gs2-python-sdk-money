@@ -57,7 +57,7 @@ class GetPlatformedItemRequest(Gs2BasicRequest):
         :param money_name: 課金通貨の名前
         :type money_name: unicode
         """
-        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
+        if money_name is not None and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -86,7 +86,7 @@ class GetPlatformedItemRequest(Gs2BasicRequest):
         :param item_name: 商品の名前
         :type item_name: unicode
         """
-        if item_name and not (isinstance(item_name, str) or isinstance(item_name, unicode)):
+        if item_name is not None and not (isinstance(item_name, str) or isinstance(item_name, unicode)):
             raise TypeError(type(item_name))
         self.__item_name = item_name
 
@@ -115,7 +115,7 @@ class GetPlatformedItemRequest(Gs2BasicRequest):
         :param platform: プラットフォームの名前
         :type platform: unicode
         """
-        if platform and not (isinstance(platform, str) or isinstance(platform, unicode)):
+        if platform is not None and not (isinstance(platform, str) or isinstance(platform, unicode)):
             raise TypeError(type(platform))
         self.__platform = platform
 

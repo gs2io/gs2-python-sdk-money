@@ -57,7 +57,7 @@ class CreateItemRequest(Gs2BasicRequest):
         :param money_name: 課金通貨の名前
         :type money_name: unicode
         """
-        if money_name and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
+        if money_name is not None and not (isinstance(money_name, str) or isinstance(money_name, unicode)):
             raise TypeError(type(money_name))
         self.__money_name = money_name
 
@@ -86,7 +86,7 @@ class CreateItemRequest(Gs2BasicRequest):
         :param name: 商品名
         :type name: unicode
         """
-        if name and not (isinstance(name, str) or isinstance(name, unicode)):
+        if name is not None and not (isinstance(name, str) or isinstance(name, unicode)):
             raise TypeError(type(name))
         self.__name = name
 
@@ -115,7 +115,7 @@ class CreateItemRequest(Gs2BasicRequest):
         :param count: 付与する課金通貨の数
         :type count: int
         """
-        if count and not isinstance(count, int):
+        if count is not None and not isinstance(count, int):
             raise TypeError(type(count))
         self.__count = count
 
