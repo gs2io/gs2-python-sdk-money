@@ -175,13 +175,13 @@ class Receipt(object):
         """
         return self.__type
 
-    def set_type(self, _type):
+    def set_type(self, type_):
         """
         種類を設定
-        :param _type: 種類
-        :type _type: unicode
+        :param type_: 種類
+        :type type_: unicode
         """
-        self.__type = _type
+        self.__type = type_
 
     def __getitem__(self, key):
         items = self.to_dict()
